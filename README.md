@@ -17,12 +17,16 @@ python3 scripts/mycotb_analysis.py     # v3
 python3 scripts/mycotb_robustness.py   # v4
 python3 scripts/mycotb_regression.py   # v5 (downloads World Bank indicators with curl)
 python3 scripts/mycotb_extended.py     # v6
+python3 scripts/mycotb_review_v8.py   # v8: flow table, missing-country scenarios, lag thresholds, year-specific income class
+python3 scripts/literature_search_log.py   # query log (network)
 python3 scripts/mycotb_negbin.py   # v7: negative binomial sensitivity
 python3 scripts/turkey_provenance.py
 python3 scripts/export_clean_samples.py
 python3 paper/make_tables.py && python3 paper/make_figures.py
 ```
 The raw ENA table (`data/mycotb_pilot_out/mtb_read_runs_all.tsv`, 119 MB) is not stored in the repository; `mycotb_pilot.py` regenerates it (ENA contents change over time, so a re-download will not reproduce counts exactly). Set `MBTC_BASE` to use another data directory.
+
+Year-specific World Bank income classification (`data/mycotb_extended_out/external/wb_income_groups_by_year.csv`) is the World Bank series as distributed by Our World in Data (CC BY).
 
 ## Licence
 Code: MIT. Derived tables and figures: CC BY 4.0. Underlying metadata remain subject to the terms of ENA/INSDC, WHO and the World Bank.

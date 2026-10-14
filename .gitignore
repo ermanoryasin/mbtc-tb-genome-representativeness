@@ -21,3 +21,4 @@ paper/build_ei.py
 paper/assemble_ei.py
 paper/build_docx_ei.py
 paper/figures/
+paper/package_ei.py
