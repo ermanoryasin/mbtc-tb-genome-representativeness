@@ -11,5 +11,7 @@ authors:
     orcid: "https://orcid.org/0000-0003-2469-9728"
     affiliation: "Department of Medical Microbiology, Faculty of Medicine, Aydin Adnan Menderes University, Aydin, Türkiye"
 date-released: "2026-10-14"
+version: "v1.0.0"
+doi: "10.5281/zenodo.23376282"
 license: MIT
 repository-code: "https://github.com/ermanoryasin/mbtc-tb-genome-representativeness"
