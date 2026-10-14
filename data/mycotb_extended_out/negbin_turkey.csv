@@ -1,0 +1,3 @@
+model,observed,expected_poisson,expected_nb2,expected_nb2_lo,expected_nb2_hi,alpha,p_obs_le_under_nb2,p_obs_le_averaged,shortfall_rank_nb2,shortfall_rank_poisson
+P3,0,2614.0,3870.0,2326.0,6421.0,5.84,0.179,0.18,21,9
+P4,0,2844.0,4402.0,2430.0,7870.0,5.84,0.176,0.176,22,6

@@ -18,7 +18,7 @@ ig=pd.read_csv(S+"mycotb_regression_out/income_groups.csv")
 ds=pd.read_csv(S+"mycotb_regression_out/analysis_dataset.csv")
 ev=pd.read_csv(S+"mycotb_regression_out/expected_vs_observed.csv")
 mo=pd.read_csv(S+"mycotb_regression_out/models.csv")
-rr=pd.read_csv(S+"mycotb_extended_out/regions_release.csv"); bs=pd.read_csv(S+"mycotb_extended_out/study_bootstrap.csv").set_index("metric"); cap=pd.read_csv(S+"mycotb_extended_out/study_cap_sensitivity.csv"); sd=pd.read_csv(S+"mycotb_extended_out/study_dependence_models.csv")
+rr=pd.read_csv(S+"mycotb_extended_out/regions_release.csv"); bs=pd.read_csv(S+"mycotb_extended_out/study_bootstrap.csv").set_index("metric"); cap=pd.read_csv(S+"mycotb_extended_out/study_cap_sensitivity.csv"); sd=pd.read_csv(S+"mycotb_extended_out/study_dependence_models.csv"); nbm=pd.read_csv(S+"mycotb_extended_out/negbin_models.csv")
 rc=pd.read_csv(S+"mycotb_robustness_out/release_cohorts.csv"); lm=pd.read_csv(S+"mycotb_robustness_out/lag_matched.csv")
 un=pd.read_csv(S+"mycotb_robustness_out/uncertainty.csv"); tn=pd.read_csv(S+"mycotb_analysis_out/turkey_neighbors.csv")
 
@@ -120,11 +120,12 @@ a.errorbar([bs.loc["gini","point"]],[0],xerr=[[bs.loc["gini","point"]-bs.loc["gi
 for i,(k,nm) in enumerate([("no cap","No cap"),("cap 100 per study","Cap 100"),("cap 25 per study","Cap 25")]):
     gv=cap[cap.scenario==k].gini.iloc[0]; a.scatter([gv],[-(i+1)*.6],c=C["bur"],s=14,zorder=3)
 a.set_yticks([0,-.6,-1.2,-1.8]); a.set_yticklabels(["Bootstrap\n(studies)","No cap","Cap 100","Cap 25"],fontsize=6.5); a.set_ylim(-2.3,.5); a.set_xlim(.74,.95); a.set_xlabel("Gini coefficient"); a.set_title("Gini"); lab(a,"b")
-a=ax[2]; sel=[("P3 HC1 (published)","Robust SE (P3)"),("P3 region-clustered CR1 (t, G-1 df)","Region-clustered SE"),("Outcome: genomes capped at 25/study, HC1","Capped at 25/study"),("Outcome: number of distinct studies, HC1","Number of studies")]
+a=ax[2]; sel=[("P3 HC1 (published)","Poisson, robust SE (P3)"),("P3 region-clustered CR1 (t, G-1 df)","Poisson, region-clustered SE"),("Outcome: genomes capped at 25/study, HC1","Poisson, capped at 25/study"),("Outcome: number of distinct studies, HC1","Poisson, number of studies"),("NB","Negative binomial (P3)")]
 for i,(k,nm) in enumerate(sel):
     for tm,col,off_ in [("log2 GDP",C["bur"],.12),("log2 rate",C["gen"],-.12)]:
-        r=sd[(sd.model==k)&(sd.term==tm)].iloc[0]; a.errorbar(r.rr,-i+off_,xerr=[[r.rr-r.ci_lo],[r.ci_hi-r.rr]],fmt="o",c=col,ms=3.5,lw=1,capsize=1.8,label=("GDP per capita" if tm=="log2 GDP" else "Incidence rate") if i==0 else None)
+        r=(nbm[(nbm.model=="P3 NB2 robust")&(nbm.term==tm)] if k=="NB" else sd[(sd.model==k)&(sd.term==tm)]).iloc[0]
+        a.errorbar(r.rr,-i+off_,xerr=[[r.rr-r.ci_lo],[r.ci_hi-r.rr]],fmt="o",c=col,ms=3.5,lw=1,capsize=1.8,label=("GDP per capita" if tm=="log2 GDP" else "Incidence rate") if i==0 else None)
 a.axvline(1,c="k",lw=.6,ls=":"); a.set_xscale("log"); a.set_xticks([.3,.5,1,2,4,8]); a.set_xticklabels(["0.3","0.5","1","2","4","8"]); a.minorticks_off(); a.set_xlim(.28,9)
-a.set_yticks([-i for i in range(4)]); a.set_yticklabels([s_[1] for s_ in sel],fontsize=6.5); a.set_xlabel("Rate ratio per doubling (95% CI)"); a.legend(fontsize=5.8,loc="upper center",bbox_to_anchor=(.5,-.3),ncol=2); a.set_title("Model specification"); lab(a,"c")
+a.set_yticks([-i for i in range(len(sel))]); a.set_yticklabels([s_[1] for s_ in sel],fontsize=6.3); a.set_xlabel("Rate ratio per doubling (95% CI)"); a.legend(fontsize=5.8,loc="upper center",bbox_to_anchor=(.5,-.3),ncol=2); a.set_title("Estimator and outcome"); lab(a,"c")
 save(f,"Fig6_study_dependence")
 print("ok")

@@ -1,0 +1,65 @@
+model,term,rr,ci_lo,ci_hi,p,n
+P3 Poisson HC1,log2 GDP,2.294,1.328,3.963,0.00292,187
+P3 quasi-Poisson,log2 GDP,2.294,0.806,6.529,0.12,187
+P3 Poisson HC1,log2 rate,0.512,0.349,0.753,0.000651,187
+P3 quasi-Poisson,log2 rate,0.512,0.323,0.813,0.00452,187
+P3 Poisson HC1,log2 art/M,0.911,0.71,1.17,0.466,187
+P3 quasi-Poisson,log2 art/M,0.911,0.558,1.489,0.711,187
+P3 NB2 ML,log2 GDP,0.832,0.543,1.276,0.4,187
+P3 NB2 robust,log2 GDP,0.832,0.471,1.471,0.528,187
+P3 NB2 ML,log2 rate,1.371,1.09,1.725,0.00708,187
+P3 NB2 robust,log2 rate,1.371,1.107,1.698,0.00388,187
+P3 NB2 ML,log2 art/M,2.518,1.981,3.199,4.15e-14,187
+P3 NB2 robust,log2 art/M,2.518,1.907,3.324,7.43e-11,187
+P4 Poisson HC1,log2 GDP,1.708,0.916,3.182,0.0921,187
+P4 quasi-Poisson,log2 GDP,1.708,0.812,3.59,0.158,187
+P4 Poisson HC1,log2 rate,0.603,0.315,1.154,0.127,187
+P4 quasi-Poisson,log2 rate,0.603,0.426,0.854,0.00433,187
+P4 Poisson HC1,log2 art/M,1.058,0.717,1.561,0.777,187
+P4 quasi-Poisson,log2 art/M,1.058,0.723,1.546,0.772,187
+P4 Poisson HC1,log2 cases,0.861,0.665,1.113,0.253,187
+P4 quasi-Poisson,log2 cases,0.861,0.732,1.011,0.0682,187
+P4 NB2 ML,log2 GDP,0.83,0.539,1.28,0.399,187
+P4 NB2 robust,log2 GDP,0.83,0.448,1.538,0.554,187
+P4 NB2 ML,log2 rate,1.347,1.03,1.761,0.0298,187
+P4 NB2 robust,log2 rate,1.347,0.98,1.851,0.0668,187
+P4 NB2 ML,log2 art/M,2.527,1.982,3.221,7.15e-14,187
+P4 NB2 robust,log2 art/M,2.527,1.866,3.421,2.01e-09,187
+P4 NB2 ML,log2 cases,1.047,0.924,1.186,0.468,187
+P4 NB2 robust,log2 cases,1.047,0.92,1.192,0.483,187
+GDP only Poisson HC1,log2 GDP,5.322,3.089,9.171,1.73e-09,187
+GDP only NB2 robust,log2 GDP,2.207,1.446,3.367,0.00024,187
+Incidence rate only Poisson HC1,log2 rate,0.365,0.294,0.453,6.41e-20,187
+Incidence rate only NB2 robust,log2 rate,0.607,0.516,0.714,1.56e-09,187
+Articles per million only Poisson HC1,log2 art/M,2.763,1.614,4.729,0.000212,187
+Articles per million only NB2 robust,log2 art/M,1.878,1.708,2.065,8.06e-39,187
+GDP + rate Poisson HC1,log2 GDP,2.041,1.233,3.378,0.00552,187
+GDP + rate NB2 robust,log2 GDP,2.084,1.28,3.394,0.00316,187
+GDP + rate Poisson HC1,log2 rate,0.519,0.352,0.764,0.000901,187
+GDP + rate NB2 robust,log2 rate,0.945,0.772,1.155,0.579,187
+GDP + articles Poisson HC1,log2 GDP,4.529,2.333,8.792,8.1e-06,187
+GDP + articles NB2 robust,log2 GDP,0.714,0.434,1.174,0.184,187
+GDP + articles Poisson HC1,log2 art/M,1.124,0.817,1.545,0.473,187
+GDP + articles NB2 robust,log2 art/M,2.252,1.798,2.822,1.68e-12,187
+P5 (P3 + WHO region) Poisson HC1,log2 GDP,1.735,0.984,3.058,0.0567,187
+P5 (P3 + WHO region) NB2 robust,log2 GDP,0.487,0.293,0.81,0.0056,187
+P5 (P3 + WHO region) Poisson HC1,log2 rate,0.622,0.46,0.841,0.00199,187
+P5 (P3 + WHO region) NB2 robust,log2 rate,1.387,1.007,1.911,0.0449,187
+P5 (P3 + WHO region) Poisson HC1,log2 art/M,1.162,0.874,1.545,0.302,187
+P5 (P3 + WHO region) NB2 robust,log2 art/M,3.008,2.263,3.998,3.33e-14,187
+P5 (P3 + WHO region) Poisson HC1,region AMR,1.314,0.253,6.817,0.745,187
+P5 (P3 + WHO region) NB2 robust,region AMR,6.292,1.356,29.196,0.0188,187
+P5 (P3 + WHO region) Poisson HC1,region EMR,0.061,0.016,0.233,4.5e-05,187
+P5 (P3 + WHO region) NB2 robust,region EMR,1.14,0.156,8.338,0.897,187
+P5 (P3 + WHO region) Poisson HC1,region EUR,0.653,0.1,4.284,0.657,187
+P5 (P3 + WHO region) NB2 robust,region EUR,4.581,0.55,38.177,0.159,187
+P5 (P3 + WHO region) Poisson HC1,region SEA,0.259,0.095,0.709,0.00851,187
+P5 (P3 + WHO region) NB2 robust,region SEA,0.847,0.223,3.216,0.807,187
+P5 (P3 + WHO region) Poisson HC1,region WPR,0.269,0.07,1.033,0.0557,187
+P5 (P3 + WHO region) NB2 robust,region WPR,0.791,0.173,3.608,0.762,187
+Income groups (ref low) Poisson HC1,income HIC,71.779,13.466,382.604,5.57e-07,187
+Income groups (ref low) NB2 robust,income HIC,13.608,2.449,75.597,0.00285,187
+Income groups (ref low) Poisson HC1,income LMC,0.47,0.161,1.369,0.166,187
+Income groups (ref low) NB2 robust,income LMC,0.24,0.038,1.516,0.129,187
+Income groups (ref low) Poisson HC1,income UMC,4.122,1.201,14.155,0.0244,187
+Income groups (ref low) NB2 robust,income UMC,3.33,0.481,23.04,0.223,187

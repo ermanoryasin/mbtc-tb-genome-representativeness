@@ -17,6 +17,7 @@ python3 scripts/mycotb_analysis.py     # v3
 python3 scripts/mycotb_robustness.py   # v4
 python3 scripts/mycotb_regression.py   # v5 (downloads World Bank indicators with curl)
 python3 scripts/mycotb_extended.py     # v6
+python3 scripts/mycotb_negbin.py   # v7: negative binomial sensitivity
 python3 scripts/turkey_provenance.py
 python3 scripts/export_clean_samples.py
 python3 paper/make_tables.py && python3 paper/make_figures.py
