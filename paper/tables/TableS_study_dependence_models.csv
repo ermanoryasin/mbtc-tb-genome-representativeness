@@ -1,0 +1,16 @@
+model,term,rr,ci_lo,ci_hi,p,n
+P3 HC1 (published),log2 GDP,2.294,1.328,3.963,0.00292,187
+P3 HC1 (published),log2 rate,0.512,0.349,0.753,0.000651,187
+P3 HC1 (published),log2 art/M,0.911,0.71,1.17,0.466,187
+P3 region-clustered CR1 (normal),log2 GDP,2.294,1.537,3.424,4.84e-05,187
+P3 region-clustered CR1 (normal),log2 rate,0.512,0.371,0.708,5.07e-05,187
+P3 region-clustered CR1 (normal),log2 art/M,0.911,0.669,1.242,0.557,187
+"P3 region-clustered CR1 (t, G-1 df)",log2 GDP,2.294,1.357,3.879,0.0097,187
+"P3 region-clustered CR1 (t, G-1 df)",log2 rate,0.512,0.335,0.783,0.0098,187
+"P3 region-clustered CR1 (t, G-1 df)",log2 art/M,0.911,0.607,1.368,0.582,187
+"Outcome: genomes capped at 25/study, HC1",log2 GDP,2.18,1.203,3.951,0.0102,187
+"Outcome: genomes capped at 25/study, HC1",log2 rate,0.656,0.464,0.928,0.0171,187
+"Outcome: genomes capped at 25/study, HC1",log2 art/M,0.959,0.737,1.247,0.754,187
+"Outcome: number of distinct studies, HC1",log2 GDP,3.248,1.559,6.767,0.00166,187
+"Outcome: number of distinct studies, HC1",log2 rate,0.913,0.483,1.724,0.779,187
+"Outcome: number of distinct studies, HC1",log2 art/M,1.012,0.623,1.645,0.961,187

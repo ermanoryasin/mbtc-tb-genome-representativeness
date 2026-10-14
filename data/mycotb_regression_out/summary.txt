@@ -1,0 +1,79 @@
+MycoTB regresyon analizi v5 - 2026-10-14 18:14
+Dunya Bankasi: 217 ulke; GSYH 243, saglik 237, makale 241 ulke icin veri
+WHO ulke sayisi: 212; ulkesi Dunya Bankasi ile eslesen: 207
+
+=== 1. GELIR GRUBUNA GORE (2010-2024; Dunya Bankasi guncel siniflamasi) ===
+  Dusuk (LIC): 24 ulke, sifir genomlu 8 | yuk %11.2 | genom %3.2 | genom/1000 vaka=0.29 | RI=0.29
+  Orta-alt (LMC): 47 ulke, sifir genomlu 19 | yuk %53.3 | genom %7.6 | genom/1000 vaka=0.14 | RI=0.14
+  Orta-ust (UMC): 58 ulke, sifir genomlu 29 | yuk %33.2 | genom %41.4 | genom/1000 vaka=1.25 | RI=1.25
+  Yuksek (HIC): 78 ulke, sifir genomlu 40 | yuk %2.3 | genom %47.7 | genom/1000 vaka=21.15 | RI=21.06
+
+=== 2. REGRESYON ANALIZLERI (analiz kumesi: 187 ulke; eksik GSYH/makale/bolge dislandi) ===
+Poisson: genom sayisi ~ ..., offset=log(kumulatif vaka), robust SE. IRR = prediktor bir KATINA cikinca genom/vaka oraninin carpani.
+Bilimsel uretim = milyon nufus basina yillik makale (toplam makale degil; ulke buyuklugu ile karismasin).
+[P1 gelir grubu (ref=LIC)] n=187
+   inc_LMC: IRR=0.47 [0.16-1.37], p=0.166
+   inc_UMC: IRR=4.12 [1.20-14.16], p=0.0244
+   inc_HIC: IRR=71.78 [13.47-382.62], p=5.57e-07
+[P2 GSYH + insidans hizi] n=187
+   log2gdp: IRR=2.04 [1.23-3.38], p=0.00552
+   log2rate: IRR=0.52 [0.35-0.76], p=0.000901
+[P3 ANA MODEL: GSYH + insidans hizi + makale/milyon] n=187
+   log2gdp: IRR=2.29 [1.33-3.96], p=0.00292
+   log2rate: IRR=0.51 [0.35-0.75], p=0.000651
+   log2artpc: IRR=0.91 [0.71-1.17], p=0.466
+[P4 P3 + log2 kumulatif vaka (olcek)] n=187
+   log2gdp: IRR=1.71 [0.92-3.18], p=0.0921
+   log2rate: IRR=0.60 [0.32-1.15], p=0.127
+   log2artpc: IRR=1.06 [0.72-1.56], p=0.777
+   log2cases: IRR=0.86 [0.67-1.11], p=0.253
+[P5 P3 + WHO bolgesi (ref=AFR)] n=187
+   log2gdp: IRR=1.73 [0.98-3.06], p=0.0567
+   log2rate: IRR=0.62 [0.46-0.84], p=0.00199
+   log2artpc: IRR=1.16 [0.87-1.55], p=0.302
+   reg_AMR: IRR=1.31 [0.25-6.82], p=0.745
+   reg_EMR: IRR=0.06 [0.02-0.23], p=4.5e-05
+   reg_EUR: IRR=0.65 [0.10-4.28], p=0.657
+   reg_SEA: IRR=0.26 [0.09-0.71], p=0.00851
+   reg_WPR: IRR=0.27 [0.07-1.03], p=0.0557
+[P6 saglik harcamasi ile (GSYH yerine)] n=185
+   log2health: IRR=2.14 [1.58-2.89], p=7.84e-07
+   log2rate: IRR=0.68 [0.53-0.89], p=0.00518
+   log2artpc: IRR=0.82 [0.68-1.00], p=0.0444
+[S1 ABD haric] n=186
+   log2gdp: IRR=2.26 [1.26-4.06], p=0.0065
+   log2rate: IRR=0.66 [0.46-0.95], p=0.0264
+   log2artpc: IRR=0.99 [0.74-1.31], p=0.937
+[S2 yalniz dusuk/orta gelirli] n=124
+   log2gdp: IRR=3.20 [1.46-7.00], p=0.00366
+   log2rate: IRR=0.82 [0.57-1.19], p=0.294
+   log2artpc: IRR=0.95 [0.74-1.21], p=0.672
+
+Lojistik: ulkede >=1 halka acik genom olma olasiligi (OR = bir katina cikinca odds carpani)
+[L1 >=1 genom (vaka olcegi dahil)] n=187
+   log2gdp: OR=0.71 [0.45-1.10], p=0.126
+   log2rate: OR=0.81 [0.60-1.08], p=0.155
+   log2artpc: OR=1.71 [1.29-2.25], p=0.000156
+   log2cases: OR=1.95 [1.59-2.38], p=9.97e-11
+
+=== 3. BEKLENEN vs GOZLENEN GENOM (P3 ana model; P4 olcek duyarliligi) ===
+Beklentinin en cok altinda kalan 15 ulke (P3: beklenen - gozlenen):
+  China (UMC, WPR): gozlenen=12273, beklenen=26116, vaka=13093000
+  Russia (HIC, EUR): gozlenen=1001, beklenen=6724, vaka=1286000
+  Japan (HIC, WPR): gozlenen=1711, beklenen=6516, vaka=296000
+  India (LMC, SEA): gozlenen=6928, beklenen=10998, vaka=45110000
+  Indonesia (UMC, WPR): gozlenen=692, beklenen=4458, vaka=13468000
+  France (HIC, EUR): gozlenen=363, beklenen=3760, vaka=82600
+  Mexico (UMC, AMR): gozlenen=431, beklenen=3371, vaka=485000
+  Germany (HIC, EUR): gozlenen=2902, beklenen=5545, vaka=74300
+  Turkey (UMC, EUR): gozlenen=0, beklenen=2614, vaka=249000
+  Saudi Arabia (HIC, EMR): gozlenen=1, beklenen=2399, vaka=51200
+  Nigeria (LMC, AFR): gozlenen=130, beklenen=2336, vaka=6569000
+  South Korea (HIC, WPR): gozlenen=712, beklenen=2784, vaka=514000
+  Egypt (LMC, EMR): gozlenen=3, beklenen=1745, vaka=189000
+  Iran (UMC, EMR): gozlenen=35, beklenen=1332, vaka=221600
+  Poland (HIC, EUR): gozlenen=216, beklenen=1488, vaka=104600
+Turkey: gozlenen=0, beklenen P3=2614 (sira 9/187), P4=2844 (sira 6/187)
+Beklentinin en cok ustunde 8 ulke: USA (46022 vs 24277), Georgia (8649 vs 82), South Africa (8785 vs 1040), Peru (6736 vs 639), Vietnam (6774 vs 1364), Moldova (5129 vs 56), Australia (5710 vs 1432), Ukraine (3024 vs 886)
+
+Yorum notu: modeller aciklayici/ilintisel, nedensel degil; genomlar bagimsiz izolat degil; bagimli degisken 'halka acik depoya yukleme', sekanslama kapasitesi degil.

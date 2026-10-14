@@ -1,0 +1,65 @@
+MycoTB v6 extended robustness - 2026-10-14 18:38
+Analysis unit: 287030 clean WGS samples
+
+=== A. WHO region x release-year cohort (burden of the same calendar window) ===
+  2013-2015 AFR: burden  26.4% genomes  28.2% RI   1.07    0.112/1000
+  2013-2015 AMR: burden   2.7% genomes  31.0% RI  11.69    1.225/1000
+  2013-2015 EMR: burden   7.4% genomes   0.0% RI   0.00    0.000/1000
+  2013-2015 EUR: burden   3.1% genomes  25.6% RI   8.30    0.869/1000
+  2013-2015 SEA: burden  35.5% genomes   7.5% RI   0.21    0.022/1000
+  2013-2015 WPR: burden  25.0% genomes   7.6% RI   0.30    0.032/1000
+  2016-2018 AFR: burden  25.9% genomes  24.0% RI   0.93    0.505/1000
+  2016-2018 AMR: burden   2.8% genomes  14.8% RI   5.26    2.856/1000
+  2016-2018 EMR: burden   7.9% genomes   1.8% RI   0.23    0.124/1000
+  2016-2018 EUR: burden   2.7% genomes  32.4% RI  11.85    6.439/1000
+  2016-2018 SEA: burden  34.8% genomes   4.8% RI   0.14    0.075/1000
+  2016-2018 WPR: burden  25.9% genomes  22.1% RI   0.86    0.465/1000
+  2019-2021 AFR: burden  25.7% genomes  13.7% RI   0.53    0.437/1000
+  2019-2021 AMR: burden   3.0% genomes  22.5% RI   7.60    6.216/1000
+  2019-2021 EMR: burden   8.4% genomes   0.6% RI   0.07    0.058/1000
+  2019-2021 EUR: burden   2.4% genomes  28.9% RI  12.26   10.031/1000
+  2019-2021 SEA: burden  34.3% genomes   8.8% RI   0.26    0.210/1000
+  2019-2021 WPR: burden  26.3% genomes  25.5% RI   0.97    0.792/1000
+  2022-2024 AFR: burden  24.8% genomes  11.2% RI   0.45    1.059/1000
+  2022-2024 AMR: burden   3.2% genomes  21.5% RI   6.68   15.641/1000
+  2022-2024 EMR: burden   8.6% genomes   1.0% RI   0.12    0.273/1000
+  2022-2024 EUR: burden   2.0% genomes  32.9% RI  16.34   38.263/1000
+  2022-2024 SEA: burden  33.8% genomes  13.0% RI   0.39    0.903/1000
+  2022-2024 WPR: burden  27.6% genomes  20.3% RI   0.74    1.723/1000
+
+=== B1. Cap on genomes per study within country (2010-2024, collection year) ===
+  no cap: {'scenario': 'no cap', 'genomes': 163314, 'genomes_per_1000': np.float64(1.004), 'gini': np.float64(0.876), 'zero_countries': 101, 'top30_genome_pct': np.float64(37.1), 'RI_LIC': np.float64(0.29), 'RI_LMC': np.float64(0.14), 'RI_UMC': np.float64(1.25), 'RI_HIC': np.float64(21.06)}
+  cap 100 per study: {'scenario': 'cap 100 per study', 'genomes': 35914, 'genomes_per_1000': np.float64(0.221), 'gini': np.float64(0.79), 'zero_countries': 101, 'top30_genome_pct': np.float64(48.1), 'RI_LIC': np.float64(0.52), 'RI_LMC': np.float64(0.25), 'RI_UMC': np.float64(1.48), 'RI_HIC': np.float64(14.16)}
+  cap 25 per study: {'scenario': 'cap 25 per study', 'genomes': 13808, 'genomes_per_1000': np.float64(0.085), 'gini': np.float64(0.78), 'zero_countries': 101, 'top30_genome_pct': np.float64(46.4), 'RI_LIC': np.float64(0.58), 'RI_LMC': np.float64(0.26), 'RI_UMC': np.float64(1.38), 'RI_HIC': np.float64(14.94)}
+
+=== B2. Study-level cluster bootstrap (1000 resamples of studies) ===
+  gini                  0.876  95% CI 0.832-0.924
+  genomes_per_1000      1.004  95% CI 0.683-1.430
+  top30_genome_pct     37.067  95% CI 24.583-52.149
+  RI_LIC                0.289  95% CI 0.119-0.560
+  RI_LMC                0.142  95% CI 0.076-0.235
+  RI_UMC                1.248  95% CI 0.832-1.755
+  RI_HIC               21.060  95% CI 12.737-28.316
+
+=== B3. Poisson models: SE type and outcome definition (P3 specification) ===
+  analysis set n = 187 (published P3: 187)
+  [P3 HC1 (published)]  n=187, dispersion=11487.3
+     log2 GDP  RR=2.29 (1.33-3.96) p=0.00292
+     log2 rate RR=0.51 (0.35-0.75) p=0.000651
+     log2 art/M RR=0.91 (0.71-1.17) p=0.466
+  [P3 region-clustered CR1 (normal)]  n=187, dispersion=11487.3, clusters=6
+     log2 GDP  RR=2.29 (1.54-3.42) p=4.84e-05
+     log2 rate RR=0.51 (0.37-0.71) p=5.07e-05
+     log2 art/M RR=0.91 (0.67-1.24) p=0.557
+  [P3 region-clustered CR1 (t, G-1 df)]  n=187, dispersion=11487.3, clusters=6
+     log2 GDP  RR=2.29 (1.36-3.88) p=0.0097
+     log2 rate RR=0.51 (0.34-0.78) p=0.0098
+     log2 art/M RR=0.91 (0.61-1.37) p=0.582
+  [Outcome: genomes capped at 25/study, HC1]  n=187, dispersion=391.6
+     log2 GDP  RR=2.18 (1.20-3.95) p=0.0102
+     log2 rate RR=0.66 (0.46-0.93) p=0.0171
+     log2 art/M RR=0.96 (0.74-1.25) p=0.754
+  [Outcome: number of distinct studies, HC1]  n=187, dispersion=86.4
+     log2 GDP  RR=3.25 (1.56-6.77) p=0.00166
+     log2 rate RR=0.91 (0.48-1.72) p=0.779
+     log2 art/M RR=1.01 (0.62-1.64) p=0.961

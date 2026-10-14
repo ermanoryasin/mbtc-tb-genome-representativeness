@@ -1,0 +1,71 @@
+MycoTB dayaniklilik analizi v4 - 2026-10-14 17:57
+Analiz birimi: 287030 temiz WGS sample
+
+=== A. YAYIN-YILI KOHORTLARI (genom hangi yil yayinlandi; gecikme etkisinden bagimsiz) ===
+2013-2015: ulke=209, genom/1000 vaka=0.10, Gini=0.911, ilk30 yuk %89.1 / genom %38.3, sifir genomlu ulke=181
+2016-2018: ulke=209, genom/1000 vaka=0.54, Gini=0.884, ilk30 yuk %89.4 / genom %51.2, sifir genomlu ulke=147
+2019-2021: ulke=209, genom/1000 vaka=0.82, Gini=0.860, ilk30 yuk %89.8 / genom %56.0, sifir genomlu ulke=140
+2022-2024: ulke=208, genom/1000 vaka=2.34, Gini=0.864, ilk30 yuk %90.0 / genom %39.5, sifir genomlu ulke=99
+
+=== B. GECIKME-ESLESTIRILMIS KOLEKSIYON-YILI EGILIMI (yalniz yayin gecikmesi <=3 yil olanlar) ===
+2010-2014: ulke=211, genom/1000 vaka=0.04, Gini=0.959, ilk30 yuk %88.7 / genom %28.3, sifir genomlu ulke=183
+2015-2019: ulke=211, genom/1000 vaka=0.30, Gini=0.923, ilk30 yuk %89.4 / genom %33.3, sifir genomlu ulke=154
+2020-2022: ulke=209, genom/1000 vaka=0.87, Gini=0.874, ilk30 yuk %90.0 / genom %35.3, sifir genomlu ulke=138
+
+=== C. DUYARLILIK ANALIZLERI (koleksiyon yili donemleri) ===
+[temel]
+  2010-2014: ulke=211, genom/1000 vaka=0.50, Gini=0.842, ilk30 yuk %88.7 / genom %56.3, sifir genomlu ulke=128
+  2015-2019: ulke=211, genom/1000 vaka=1.20, Gini=0.905, ilk30 yuk %89.4 / genom %30.5, sifir genomlu ulke=119
+  2020-2024: ulke=209, genom/1000 vaka=1.36, Gini=0.915, ilk30 yuk %90.0 / genom %26.2, sifir genomlu ulke=122
+[ABD haric]
+  2010-2014: ulke=211, genom/1000 vaka=0.50, Gini=0.843, ilk30 yuk %88.7 / genom %56.5, sifir genomlu ulke=129
+  2015-2019: ulke=211, genom/1000 vaka=0.91, Gini=0.876, ilk30 yuk %89.4 / genom %40.5, sifir genomlu ulke=120
+  2020-2024: ulke=209, genom/1000 vaka=0.78, Gini=0.856, ilk30 yuk %90.0 / genom %45.6, sifir genomlu ulke=123
+[her ulkenin en buyuk projesi haric]
+  2010-2014: ulke=211, genom/1000 vaka=0.27, Gini=0.844, ilk30 yuk %88.7 / genom %58.7, sifir genomlu ulke=143
+  2015-2019: ulke=211, genom/1000 vaka=0.65, Gini=0.882, ilk30 yuk %89.4 / genom %44.0, sifir genomlu ulke=138
+  2020-2024: ulke=209, genom/1000 vaka=0.67, Gini=0.902, ilk30 yuk %90.0 / genom %30.1, sifir genomlu ulke=140
+[ABD ve en buyuk projeler haric]
+  2010-2014: ulke=211, genom/1000 vaka=0.27, Gini=0.844, ilk30 yuk %88.7 / genom %59.2, sifir genomlu ulke=144
+  2015-2019: ulke=211, genom/1000 vaka=0.58, Gini=0.869, ilk30 yuk %89.4 / genom %49.5, sifir genomlu ulke=139
+  2020-2024: ulke=209, genom/1000 vaka=0.40, Gini=0.839, ilk30 yuk %90.0 / genom %49.9, sifir genomlu ulke=141
+
+=== E. WHO BELIRSIZLIGI ILE GUVEN ARALIKLARI (1000 Monte Carlo cekilisi, %95) ===
+2010-2014: Gini=0.842 [0.823-0.868], genom/1000=0.50 [0.42-0.54]
+2015-2019: Gini=0.905 [0.901-0.912], genom/1000=1.20 [1.11-1.23]
+2020-2024: Gini=0.915 [0.912-0.922], genom/1000=1.36 [1.24-1.39]
+
+=== D. WHO BOLGELERI: yuk payi vs genom payi (RI = genom payi / yuk payi) ===
+2010-2014:
+  SEA: yuk %35.9 | genom %3.9 | RI=0.11 | genom/1000 vaka=0.05
+  AFR: yuk %26.2 | genom %25.6 | RI=0.98 | genom/1000 vaka=0.49
+  WPR: yuk %24.7 | genom %32.1 | RI=1.30 | genom/1000 vaka=0.65
+  EMR: yuk %7.2 | genom %1.4 | RI=0.19 | genom/1000 vaka=0.09
+  EUR: yuk %3.4 | genom %16.4 | RI=4.83 | genom/1000 vaka=2.40
+  AMR: yuk %2.7 | genom %20.7 | RI=7.72 | genom/1000 vaka=3.84
+2015-2019:
+  SEA: yuk %34.9 | genom %7.2 | RI=0.21 | genom/1000 vaka=0.25
+  AFR: yuk %25.9 | genom %10.6 | RI=0.41 | genom/1000 vaka=0.49
+  WPR: yuk %25.7 | genom %16.7 | RI=0.65 | genom/1000 vaka=0.78
+  EMR: yuk %7.9 | genom %0.4 | RI=0.05 | genom/1000 vaka=0.06
+  AMR: yuk %2.8 | genom %32.4 | RI=11.50 | genom/1000 vaka=13.82
+  EUR: yuk %2.7 | genom %32.7 | RI=12.00 | genom/1000 vaka=14.41
+2020-2024:
+  SEA: yuk %33.9 | genom %7.7 | RI=0.23 | genom/1000 vaka=0.31
+  WPR: yuk %27.1 | genom %12.6 | RI=0.47 | genom/1000 vaka=0.63
+  AFR: yuk %25.1 | genom %4.6 | RI=0.18 | genom/1000 vaka=0.25
+  EMR: yuk %8.6 | genom %0.5 | RI=0.06 | genom/1000 vaka=0.08
+  AMR: yuk %3.1 | genom %50.7 | RI=16.29 | genom/1000 vaka=22.11
+  EUR: yuk %2.1 | genom %23.8 | RI=11.20 | genom/1000 vaka=15.21
+
+=== F. KAPSAMA KATEGORILERI (2010-2024; genom / 1.000 kumulatif vaka) ===
+  0: 101 ulke | yukun %4.0'i | genomlarin %0.0'i
+  <1: 55 ulke | yukun %85.1'i | genomlarin %18.0'i
+  1-10: 29 ulke | yukun %9.7'i | genomlarin %20.7'i
+  >=10: 27 ulke | yukun %1.2'i | genomlarin %61.2'i
+Asiri temsil edilen ulkeler (RI>5, yuke gore): USA=287, Germany=39, Spain=34, United Kingdom=28, Kazakhstan=11, Peru=10, Argentina=10, Japan=6
+
+=== G. TURKIYE ===
+Turkey: kumulatif tahmini vaka 249000, genom 0
+Sifir genomlu 101 ulke icinde yuke gore 9. sirada; kumulatif vakasi >=100.000 olup genomu sifir olan ulke sayisi: 19
+Sifir genomlu ilk 10 ulke (kumulatif vaka): Zimbabwe=566000, South Sudan=558000, Sudan=501000, Haiti=452000, Algeria=436000, Uzbekistan=345000, Chad=339000, Congo=270000, Turkey=249000, Lesotho=247000

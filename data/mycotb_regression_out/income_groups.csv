@@ -1,0 +1,5 @@
+income_group,countries,zero_genome_countries,burden_share_pct,genome_share_pct,genomes_per_1000_cases,representation_index
+LIC,24,8,11.22,3.24,0.290,0.289
+LMC,47,19,53.30,7.57,0.143,0.142
+UMC,58,29,33.21,41.45,1.253,1.248
+HIC,78,40,2.27,47.74,21.150,21.060

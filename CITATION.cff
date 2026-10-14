@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the manuscript (once published) and this repository."
+title: "MBTC: geographic representativeness of public Mycobacterium tuberculosis genomes"
+authors:
+  - family-names: "Oryasin"
+    given-names: "Erman"
+    orcid: "https://orcid.org/0000-0003-1242-7434"
+    affiliation: "Recombinant DNA and Recombinant Protein Research Center (REDPROM), Aydin Adnan Menderes University, Aydin, Türkiye"
+  - family-names: "Bozdogan"
+    given-names: "Bulent"
+    orcid: "https://orcid.org/0000-0003-2469-9728"
+    affiliation: "Department of Medical Microbiology, Faculty of Medicine, Aydin Adnan Menderes University, Aydin, Türkiye"
+date-released: "2026-10-14"
+license: MIT
+repository-code: "https://github.com/ermanoryasin/mbtc-tb-genome-representativeness"

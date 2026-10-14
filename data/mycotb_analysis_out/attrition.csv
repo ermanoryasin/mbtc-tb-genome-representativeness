@@ -1,0 +1,6 @@
+step,runs,samples
+0. Tum run (taxid 1773 agaci),359605,334625
+1. Siki etiket (bovis/africanum/BCG/complex vb. haric),342252,317718
+2. Laboratuvar referans suslari haric (H37Rv/Erdman/HN878/CDC1551/ATCC),328573,305425
+3. WGS + genomik kaynak (RNA-Seq/Tn-Seq/amplicon haric),301549,287030
+4. Sample (BioSample) duzeyine indirgeme = analiz birimi,301549,287030

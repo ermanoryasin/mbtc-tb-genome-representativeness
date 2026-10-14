@@ -1,0 +1,5 @@
+scenario,genomes_per_1000,pct_burden_in_low_coverage,gini,zero_genome_countries
+S0 gozlenen (eksikler dislanir),1.0,98.8,0.876,101
+S1 eksikler gozlenen dagilima orantili,1.07,98.8,0.876,101
+"S2 eksikler TB yukune orantili (uc, esitligi lehine)",1.07,98.8,0.818,0
+S3 eksiklerin tamami dusuk kapsamali ulkelere (en uc),1.07,98.8,0.818,0

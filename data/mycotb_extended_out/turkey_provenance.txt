@@ -1,0 +1,5 @@
+Strict samples labelled Turkey: 2
+  SAMEA13119680 | PRJEB50999 | Swiss Tropical and Public Health Institute;UNIVERSITY OF BAS | Collection of Mycobacterium tuberculosis samples from various countries
+  SAMEA13119682 | PRJEB50999 | Swiss Tropical and Public Health Institute;UNIVERSITY OF BAS | Collection of Mycobacterium tuberculosis samples from various countries
+All runs with Turkey country label (any taxon label): 90 runs, 31 samples, studies: ['PRJEB104949', 'PRJEB46653', 'PRJEB50999', 'PRJNA1256542', 'PRJNA1257526']
+Runs (of 359605) whose submitting centre, study title or strain contains a Turkish institution/place token: 0

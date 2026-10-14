@@ -1,0 +1,13 @@
+scenario,period,genomes,genomes_per_1000,gini,top30_genome_pct,zero_genome_countries
+temel,2010-2014,28471,0.498,0.842,56.3,128
+temel,2015-2019,63862,1.202,0.905,30.5,119
+temel,2020-2024,70981,1.357,0.915,26.2,122
+ABD haric,2010-2014,28347,0.496,0.843,56.5,129
+ABD haric,2015-2019,48102,0.905,0.876,40.5,120
+ABD haric,2020-2024,40843,0.781,0.856,45.6,123
+her ulkenin en buyuk projesi haric,2010-2014,15487,0.271,0.844,58.7,143
+her ulkenin en buyuk projesi haric,2015-2019,34452,0.648,0.882,44.0,138
+her ulkenin en buyuk projesi haric,2020-2024,34958,0.668,0.902,30.1,140
+ABD ve en buyuk projeler haric,2010-2014,15363,0.269,0.844,59.2,144
+ABD ve en buyuk projeler haric,2015-2019,30586,0.576,0.869,49.5,139
+ABD ve en buyuk projeler haric,2020-2024,21063,0.403,0.839,49.9,141

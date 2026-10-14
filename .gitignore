@@ -1,0 +1,23 @@
+# raw / bulky / superseded
+data/mycotb_pilot_out/mtb_read_runs_all.tsv
+data/mycotb_pilot_out/raw/
+data/mycogenom_pilot_out/
+data/**/*.zip
+data/mycotb_regression_out/worldbank/
+paper/manuscript_v1.md
+paper/make_figures_v1_backup.py
+# internal working notes
+CLAUDE.md
+.DS_Store
+__pycache__/
+_to_delete/
+data/**/run_log.txt
+
+# manuscript and submission package: added to the repository after acceptance
+paper/manuscript*.md
+paper/_ei_*.md
+paper/submission_EI/
+paper/build_ei.py
+paper/assemble_ei.py
+paper/build_docx_ei.py
+paper/figures/

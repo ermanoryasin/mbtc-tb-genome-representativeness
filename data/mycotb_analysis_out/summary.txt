@@ -1,0 +1,90 @@
+MycoTB offline analiz v3 - 2026-10-14 17:51
+
+=== 1. TEMIZLEME HATTI (kayip tablosu) ===
+0. Tum run (taxid 1773 agaci): run=359605, sample=334625
+1. Siki etiket (bovis/africanum/BCG/complex vb. haric): run=342252, sample=317718
+2. Laboratuvar referans suslari haric (H37Rv/Erdman/HN878/CDC1551/ATCC): run=328573, sample=305425
+3. WGS + genomik kaynak (RNA-Seq/Tn-Seq/amplicon haric): run=301549, sample=287030
+4. Sample (BioSample) duzeyine indirgeme = analiz birimi: run=301549, sample=287030
+Ayni sample icinde celisen ulke etiketi: 0
+Analiz birimi: 287030 WGS sample | ulke eksik/cok-ulkeli: 83035 (%28.9)
+Gecerli koleksiyon yili olan sample: 204886 (%71.4)
+Ulkesi bilinen ve koleksiyon yili 2010-2024 olan sample: 168729
+WHO'da eslesmeyen ulke etiketleri (sample): Taiwan=5295, Kosovo=96, Durban Chest Clinic=18, King Dinuzulu Hospital=15, North Korea=10, M3 TB Hospital=3, Church of Scotland=3, St Margaret's Hospital=2
+
+=== 2. TEMSIL / KAPSAMA METRIKLERI (representativeness / coverage), koleksiyon yili 2010-2024 ===
+ulke=212, genom/1000 vaka=1.0, yukun %98.8'i <10/1000 ulkelerde, Gini=0.876, ilk30 yuk %89.3 / genom %37.1, sifir genomlu ulke=101
+
+=== 3. DONEMSEL EGILIM (kapsama zamanla duzeliyor mu?) ===
+2010-2014: ulke=211, genom/1000 vaka=0.5, yukun %99.4'i <10/1000 ulkelerde, Gini=0.842, ilk30 yuk %88.7 / genom %56.3, sifir genomlu ulke=128
+2015-2019: ulke=211, genom/1000 vaka=1.2, yukun %99.1'i <10/1000 ulkelerde, Gini=0.905, ilk30 yuk %89.4 / genom %30.5, sifir genomlu ulke=119
+2020-2024: ulke=209, genom/1000 vaka=1.4, yukun %99.1'i <10/1000 ulkelerde, Gini=0.915, ilk30 yuk %90.0 / genom %26.2, sifir genomlu ulke=122
+
+=== 4. EKSIK ULKE BILGISI DUYARLILIK SENARYOLARI ===
+Donemde koleksiyon yili gecerli ama ulkesi eksik sample: 11492
+S0 gozlenen (eksikler dislanir): genom/1000=1.0, yukun %98.8'i dusuk kapsama, Gini=0.876, sifir genomlu ulke=101
+S1 eksikler gozlenen dagilima orantili: genom/1000=1.1, yukun %98.8'i dusuk kapsama, Gini=0.876, sifir genomlu ulke=101
+S2 eksikler TB yukune orantili (uc, esitligi lehine): genom/1000=1.1, yukun %98.8'i dusuk kapsama, Gini=0.818, sifir genomlu ulke=0
+S3 eksiklerin tamami dusuk kapsamali ulkelere (en uc): genom/1000=1.1, yukun %98.8'i dusuk kapsama, Gini=0.818, sifir genomlu ulke=0
+
+=== 5. PROJE (STUDY) YOGUNLASMASI ===
+Benzersiz study: 2884 | ilk 10 study toplam sample'in %31.5'ini olusturuyor
+En cok sample'a sahip ulkelerde proje yogunlasmasi (study sayisi / en buyuk study payi):
+  USA: 50047 sample | 45 study | en buyuk study %56.2
+  China: 16180 sample | 81 study | en buyuk study %17.7
+  South Africa: 13116 sample | 594 study | en buyuk study %20.5
+  Georgia: 10423 sample | 22 study | en buyuk study %30.8
+  Peru: 8897 sample | 27 study | en buyuk study %25.9
+  India: 8365 sample | 285 study | en buyuk study %26.6
+  Vietnam: 7650 sample | 18 study | en buyuk study %42.1
+  Australia: 7462 sample | 22 study | en buyuk study %35.0
+  Taiwan: 5295 sample | 16 study | en buyuk study %78.7
+  Moldova: 5237 sample | 16 study | en buyuk study %42.7
+  Brazil: 5119 sample | 27 study | en buyuk study %46.1
+  Italy: 3614 sample | 17 study | en buyuk study %31.4
+
+=== 6. METADATA DOLULUGU VE ULKE EKSIKLIGI (yayin yilina gore) ===
+  2021: 39666 sample | ulke eksik %63.4 | tarih %31.8 | konak %32.0 | kaynak %28.9
+  2022: 27531 sample | ulke eksik %31.5 | tarih %68.0 | konak %55.6 | kaynak %53.0
+  2023: 27117 sample | ulke eksik %44.9 | tarih %55.6 | konak %43.4 | kaynak %46.0
+  2024: 45288 sample | ulke eksik %8.1 | tarih %86.9 | konak %68.4 | kaynak %43.3
+  2025: 54177 sample | ulke eksik %4.2 | tarih %94.8 | konak %94.1 | kaynak %88.4
+  2026: 30671 sample | ulke eksik %9.9 | tarih %95.0 | konak %82.7 | kaynak %72.3
+Koleksiyon -> yayin gecikmesi (yil): medyan=5.0, n=204667
+
+=== 7. TURKIYE VE KOMSULARI ===
+(sample / genom 2010-24 / WHO vaka 2010-24 / genom per 1000 vaka / study / en buyuk study %)
+  Turkey: 2 / 0 / 249000 / 0.00 / 1 / %100.0
+  Georgia: 10423 / 8649 / 58500 / 147.85 / 22 / %30.8
+  Armenia: 0 / 0 / 21240 / 0.00 / 0 / -
+  Azerbaijan: 270 / 267 / 145500 / 1.84 / 5 / %63.3
+  Iran: 35 / 35 / 221600 / 0.16 / 2 / %97.1
+  Iraq: 3 / 2 / 170200 / 0.01 / 3 / %33.3
+  Syria: 0 / 0 / 79200 / 0.00 / 0 / -
+  Greece: 0 / 0 / 7910 / 0.00 / 0 / -
+  Bulgaria: 154 / 145 / 31230 / 4.64 / 3 / %50.0
+  Romania: 1305 / 1267 / 256000 / 4.95 / 46 / %47.2
+  Russia: 1949 / 1001 / 1286000 / 0.78 / 38 / %52.4
+  Ukraine: 3041 / 3024 / 669000 / 4.52 / 9 / %62.2
+  Moldova: 5237 / 5129 / 49500 / 103.62 / 16 / %42.7
+  Lebanon: 69 / 69 / 12850 / 5.37 / 3 / %69.6
+  Egypt: 3 / 3 / 189000 / 0.02 / 2 / %66.7
+Turkey sample listesi: 2 | koleksiyon yillari: 2000, 2007
+
+=== 8. GENOMIK KOR NOKTALAR (WHO 2024 insidansi >= 5.000 ve genom < 1 / 1.000 vaka, 2010-24) ===
+Kor nokta ulke sayisi: 69; ilk 15:
+  India: vaka(2024)=2710000, genom=6928, genom/1000 vaka=0.15
+  Indonesia: vaka(2024)=1080000, genom=692, genom/1000 vaka=0.05
+  Philippines: vaka(2024)=724000, genom=97, genom/1000 vaka=0.01
+  China: vaka(2024)=696000, genom=12273, genom/1000 vaka=0.94
+  Pakistan: vaka(2024)=669000, genom=382, genom/1000 vaka=0.04
+  Nigeria: vaka(2024)=510000, genom=130, genom/1000 vaka=0.02
+  Democratic Republic of the Congo: vaka(2024)=412000, genom=67, genom/1000 vaka=0.01
+  Bangladesh: vaka(2024)=384000, genom=459, genom/1000 vaka=0.09
+  Myanmar: vaka(2024)=263000, genom=380, genom/1000 vaka=0.12
+  Ethiopia: vaka(2024)=186000, genom=1550, genom/1000 vaka=0.51
+  Angola: vaka(2024)=141000, genom=1, genom/1000 vaka=0.00
+  Mozambique: vaka(2024)=125000, genom=110, genom/1000 vaka=0.07
+  Tanzania: vaka(2024)=118000, genom=1855, genom/1000 vaka=0.82
+  Kenya: vaka(2024)=117000, genom=325, genom/1000 vaka=0.13
+  Uganda: vaka(2024)=99000, genom=256, genom/1000 vaka=0.21

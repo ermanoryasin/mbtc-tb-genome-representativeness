@@ -1,0 +1,78 @@
+MycoTB pilotu v2 - 2026-10-14 17:36
+NCBI SRA (esearch) M. tuberculosis (txid1773 agaci) kayit sayisi: 378990
+
+=== GLOBAL M. tuberculosis (ENA read_run, taxid 1773 agaci) ===
+Toplam run: 359605 | benzersiz sample: 334625
+Siki etiket filtresi (adi 'Mycobacterium tuberculosis', varyant/complex vb. haric): 342252 run (%95.2)
+scientific_name dagilimi: Mycobacterium tuberculosis=321046, Mycobacterium tuberculosis variant bovis=14984, Mycobacterium tuberculosis H37Rv=7439, Mycobacterium tuberculosis str. Erdman = ATCC 35801=1385, Mycobacterium tuberculosis variant africanum=1100, Mycobacterium tuberculosis variant bovis BCG=444, Mycobacterium tuberculosis variant caprae=318, Mycobacterium tuberculosis Ps4_HN878=208
+Karsilastirma: onceki pilot tum MTBC (taxid 77643) run = 365764
+[tree] ulke eksik: 103148 run (%28.7), cok-ulkeli: 154; ulke sayisi: 153
+[strict] ulke eksik: 98132 run (%28.7), cok-ulkeli: 149; ulke sayisi: 151
+library_strategy: WGS=323373, AMPLICON=18668, RNA-Seq=11520, OTHER=2303, WGA=1314, Tn-Seq=1119
+platform: ILLUMINA=348474, OXFORD_NANOPORE=5031, ION_TORRENT=1730, BGISEQ=1353, PACBIO_SMRT=1052
+En cok WGS sample'a sahip 15 ulke (siki filtre: run / sample / WGS sample):
+  (missing): 98132 / 92352 / 84689
+  USA: 57225 / 54822 / 50489
+  China: 22586 / 20022 / 18382
+  South Africa: 16201 / 14228 / 13143
+  Georgia: 13623 / 10442 / 10423
+  Peru: 9350 / 9224 / 8903
+  India: 10470 / 8845 / 8405
+  Vietnam: 7968 / 7724 / 7651
+  Australia: 7505 / 7488 / 7462
+  Taiwan: 5812 / 5406 / 5295
+  Moldova: 5750 / 5432 / 5237
+  Brazil: 5787 / 5551 / 5119
+  Thailand: 3923 / 3754 / 3616
+  Italy: 3710 / 3633 / 3614
+  United Kingdom: 5354 / 5287 / 3392
+  Spain: 3444 / 3319 / 3299
+Turkiye ve cevresi (siki filtre: run / sample / WGS sample / %tarih / %konak):
+  Georgia: 13623 / 10442 / 10423 / %75.7 / %36.6
+  Russia: 2148 / 2117 / 1949 / %95.1 / %95.6
+  Romania: 1305 / 1305 / 1305 / %99.4 / %100.0
+  Azerbaijan: 277 / 270 / 270 / %98.9 / %98.9
+  Bulgaria: 155 / 155 / 154 / %100.0 / %100.0
+  Iran: 72 / 72 / 72 / %100.0 / %100.0
+  Lebanon: 75 / 75 / 69 / %100.0 / %100.0
+  Iraq: 3 / 3 / 3 / %66.7 / %66.7
+  Egypt: 3 / 3 / 3 / %100.0 / %100.0
+  Turkey: 4 / 2 / 2 / %100.0 / %0.0
+
+=== GIZLI TURKIYE ADAYLARI (merkez adi / study basligi taramasi) ===
+Aday bulunamadi.
+
+=== TURKEY ETIKETLI MTBC KAYITLARI (taxid 77643 agaci, tum yazim varyantlari) ===
+Ham country yazimlari: 'Turkey'=82
+Run: 82 | sample: 23 | study: 3
+Tur dagilimi (run): Mycobacterium tuberculosis variant bovis=78, Mycobacterium tuberculosis=4
+Siki M. tuberculosis: 4 run, 2 sample
+library_strategy: WGS=82
+collection_date yili: 2000=2, 2007=2, 2013=4, 2014=16, 2016=12, 2017=16, 2018=4, 2019=16, 2025=2, 9999=8
+first_public yili: 2021=76, 2022=4, 2026=2
+  collection_date dolu: %100.0
+  host dolu: %2.4
+  isolation_source dolu: %7.3
+Study'ler: PRJEB46653 (76 run); PRJEB50999 (4 run); PRJEB104949 (2 run)
+BioSample kaydi: 23 | Mycobacterium tuberculosis variant bovis=21, Mycobacterium tuberculosis=2
+
+=== ADALET METRIKLERI (WHO 2024 insidansi; siki M. tuberculosis WGS sample) ===
+Ulke: 207 | genom/1000 yillik vaka (kuresel): 19.1
+Yukun %82.0'i yillik 1000 vakaya <10 genom dusen ulkelerde
+Gini (genom dagilimi vs yuk): 0.878
+Ilk 30 yuk ulkesi: yukun %90.0'i, WGS'nin %38.4'i
+Komsular (insidans / WGS sample / genom per 1000 vaka):
+  Armenia: 550 / 0 / 0.0
+  Azerbaijan: 6600 / 270 / 40.9
+  Bulgaria: 830 / 154 / 185.5
+  Egypt: 12000 / 3 / 0.2
+  Georgia: 1700 / 10423 / 6131.2
+  Greece: 360 / 0 / 0.0
+  Iran (Islamic Republic of): 9600 / 72 / 7.5
+  Iraq: 9800 / 3 / 0.3
+  Lebanon: 740 / 69 / 93.2
+  Romania: 11000 / 1305 / 118.6
+  Russian Federation: 49000 / 1949 / 39.8
+  Syrian Arab Republic: 5600 / 0 / 0.0
+  Türkiye: 11000 / 2 / 0.2
+Turkey: etiketli WGS=2; gizli adaylar (ulkesi eksik) dahil ust sinir=2 -> 0.2 genom/1000 vaka

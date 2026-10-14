@@ -1,0 +1,4 @@
+period,countries,genomes,genomes_per_1000_cases,pct_burden_in_low_coverage,gini,top30_burden_pct,top30_genome_pct,zero_genome_countries
+2010-2014,211,28471,0.50,99.4,0.842,88.7,56.3,128
+2015-2019,211,63862,1.20,99.1,0.905,89.4,30.5,119
+2020-2024,209,70981,1.36,99.1,0.915,90.0,26.2,122
