@@ -58,23 +58,27 @@ f,ax=plt.subplots(1,3,figsize=(7.4,3.0),gridspec_kw=dict(width_ratios=[.8,1.0,1.
 a=ax[0]; cols=["#999999","#D55E00","#E69F00","#0072B2"]; bot=np.zeros(2)
 for c_,col in zip(t.index,cols):
     v=np.array([t.loc[c_,"b"],t.loc[c_,"g"]]); a.bar([0,1],v,bottom=bot,color=col,width=.6,label=f"{c_} (n={int(t.loc[c_,'n'])})"); bot+=v
-a.set_xticks([0,1]); a.set_xticklabels(["Burden","Genomes"]); a.set_ylabel("Share (%)"); a.legend(title="Genomes / 1,000 cases",fontsize=6,title_fontsize=6.5,loc="upper center",bbox_to_anchor=(.5,-.12),ncol=2)
+a.set_xticks([0,1]); a.set_xticklabels(["Burden","Genomes"]); a.set_ylabel("Share (%)"); a.legend(title="Genomes / 1000 cases",fontsize=6,title_fontsize=6.5,loc="upper center",bbox_to_anchor=(.5,-.12),ncol=2)
 a.set_title("Coverage category"); lab(a,"a")
 a=ax[1]; g=cr.groupby("who_region").agg(b=("burden_share_pct","sum"),g=("genome_share_pct","sum")).sort_values("b"); y=np.arange(len(g))
 a.barh(y+.2,g.b,.38,color=C["bur"],label="TB burden"); a.barh(y-.2,g.g,.38,color=C["gen"],label="Genomes")
 a.set_yticks(y); a.set_yticklabels(g.index); a.set_xlabel("Share (%)"); a.set_title("WHO region"); lab(a,"b"); a.legend(fontsize=6,loc="upper center",bbox_to_anchor=(.5,-.2),ncol=2)
 a=ax[2]; top=cr.sort_values("who_incidence_2010_2024",ascending=False).head(15).iloc[::-1]
 v=top.genomes_per_1000.clip(lower=.003); a.barh(top.country.str.replace("Democratic Republic of the Congo","DR Congo"),v,color=[C["bur"] if x>=1 else C["gen"] for x in top.genomes_per_1000])
-a.set_xscale("log"); a.axvline(1,c="k",lw=.6,ls=":"); a.set_xlabel("Genomes per 1,000 cases (log)"); a.set_title("15 highest-burden countries"); lab(a,"c")
+a.set_xscale("log"); a.axvline(1,c="k",lw=.6,ls=":"); a.set_xlabel("Genomes per 1000 cases (log)"); a.set_title("15 highest-burden countries"); lab(a,"c")
 save(f,"Fig2_coverage")
 # ---------- Fig 3 (2x2)
 f,ax=plt.subplots(2,2,figsize=(6.6,5.2),gridspec_kw=dict(wspace=.38,hspace=.55)); ax=ax.ravel()
 a=ax[0]; xs=np.arange(len(un)); a.errorbar(xs,un.gini_point,yerr=[un.gini_point-un.gini_lo,un.gini_hi-un.gini_point],fmt="o-",c=C["gray"],capsize=2)
 a.set_xticks(xs); a.set_xticklabels(un.period); a.set_ylim(.8,1); a.set_ylabel("Gini coefficient"); a.set_title("Naive, by collection period"); lab(a,"a")
 a.text(.5,.06,"confounded by publication lag",transform=a.transAxes,ha="center",fontsize=6.5,color=C["gray"])
-a=ax[1]; a.plot(np.arange(len(lm)),lm.gini,"s-",c=C["bur"]); a.set_xticks(np.arange(len(lm))); a.set_xticklabels(lm.collection_period); a.set_ylim(.8,1); a.set_ylabel("Gini coefficient"); a.set_title("Lag-matched (lag <= 3 y)"); lab(a,"b")
+lt=pd.read_csv(S+"mycotb_extended_out/lag_threshold_windows.csv"); a=ax[1]
+wl=["2010-12","2013-15","2016-18","2019-21"]; wk=["2010-2012","2013-2015","2016-2018","2019-2021"]
+for k_,col,mk in [(3,C["bur"],"s"),(5,C["green"],"o"),(7,C["gen"],"^")]:
+    sub=lt[lt.lag_threshold_years==k_]; xs_=[wk.index(w) for w in sub.window]; a.plot(xs_,sub.gini,mk+"-",c=col,ms=4,lw=1.3,label=f"{k_} years")
+a.set_xticks(range(4)); a.set_xticklabels(wl,fontsize=7); a.set_ylim(.8,1); a.set_ylabel("Gini coefficient"); a.set_title("Lag-matched, by threshold"); lab(a,"b"); a.legend(title="Release within",fontsize=6,title_fontsize=6.5,loc="lower left")
 a=ax[2]; xs=np.arange(len(rc)); a.bar(xs,rc.genomes_per_1000,color=C["green"]); a.set_xticks(xs); a.set_xticklabels([w_.replace("20","") for w_ in rc.release_window],fontsize=7)
-a.set_ylabel("Genomes per 1,000 cases"); a.set_xlabel("Release window (20xx)"); a.set_title("By release window"); lab(a,"c")
+a.set_ylabel("Genomes per 1000 cases"); a.set_xlabel("Release window (20xx)"); a.set_title("By release window"); lab(a,"c")
 for i,r in rc.iterrows(): a.text(i,r.genomes_per_1000+.05,f"{int(r.zero_genome_countries)}",ha="center",fontsize=6.5)
 a.text(.02,.95,"numbers: countries with\nzero genomes",transform=a.transAxes,fontsize=6,color=C["gray"],va="top")
 a=ax[3]; rcol=dict(AFR=C["yel"],AMR=C["green"],EMR=C["tr"],EUR=C["bur"],SEA=C["gen"],WPR="#444444")
@@ -110,7 +114,7 @@ a.legend(fontsize=5.3,loc="upper left",bbox_to_anchor=(-.02,-.22),handletextpad=
 a=ax[1]; nbx["sf_p"]=nbx.expected_poisson_P3-nbx.observed
 s_=nbx.sort_values("sf_p",ascending=False).head(12).iloc[::-1]
 a.barh(s_.country,s_.sf_p/1000,color=[C["tr"] if c=="Turkey" else C["gen"] for c in s_.country]); a.set_xlabel("Shortfall (thousand genomes), Poisson P3"); a.set_title("Largest shortfalls"); lab(a,"b")
-a.text(.97,.04,"Turkey: rank 9 (Poisson),\n21 (negative binomial)",transform=a.transAxes,fontsize=6,color=C["tr"],ha="right",va="bottom")
+a.text(.97,.04,"Turkey: rank 9 (Poisson),\n21 (negative binomial)\nExpected counts are not calibrated;\nshortfall is not absence of sequencing",transform=a.transAxes,fontsize=5.6,color=C["tr"],ha="right",va="bottom")
 a=ax[2]; n=tn.iloc[::-1].reset_index(drop=True); nz=n.genomes_per_1000_cases>0
 a.barh(n.index[nz],n.genomes_per_1000_cases[nz],color=[C["tr"] if c=="Turkey" else C["bur"] for c in n.country[nz]]); a.set_xscale("log"); a.set_xlim(.004,400)
 a.scatter([.006]*int((~nz).sum()),n.index[~nz],marker="x",s=14,c=[C["tr"] if c=="Turkey" else C["gray"] for c in n.country[~nz]],lw=1)

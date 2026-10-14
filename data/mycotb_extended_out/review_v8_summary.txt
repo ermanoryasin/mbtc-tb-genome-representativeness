@@ -1,0 +1,65 @@
+MycoTB v8 review responses; samples 287030
+
+=== 1. Flow table ===
+    359605  ENA runs, taxon tree 1773 (BioSample-level: 334625)  [retrieved 14 October 2026; NCBI Entrez count of 378990 records was higher by 19385 and could not be reconciled]
+    342252  after strict M. tuberculosis label  [excluded variants and complex members (bovis, africanum, caprae, BCG and others)]
+    328573  after excluding laboratory reference strains  [H37Rv, H37Ra, Erdman, HN878, CDC1551, ATCC]
+    301549  after whole-genome, genomic-source runs  [excluded RNA-seq, Tn-seq and amplicon assays]
+    287030  BioSamples (analysis unit)  [runs collapsed to BioSample]
+    203995  with a single known country  [country missing or multiple for 83035 (28.9%)]
+    168729  with known country and collection year 2010-2024  [collection year missing or outside 2010-2024 for 35266]
+    163314  matched to a WHO reporting country (denominator of all representation statistics)  [unmatched: Taiwan 5265, Kosovo 96, Durban Chest Clinic 18, King Dinuzulu Hospital 15, other 21]
+       212  countries with WHO incidence, 2010-2024  [of which 207 with a World Bank income group (5 small territories unclassified, all without genomes)]
+       187  countries in the regression models  [complete GDP, articles per million, incidence rate, region and income]
+
+=== 2. Missing-country scenarios (2010-2024) ===
+  S0 missing excluded (main analysis): {'scenario': 'S0 missing excluded (main analysis)', 'genomes': 163314, 'genomes_per_1000': 1.0, 'gini': 0.876, 'zero_genome_countries': 101, 'RI_LIC': 0.29, 'RI_LMC': 0.14, 'RI_UMC': 1.25, 'RI_HIC': 21.06}
+  S1 missing proportional to observed genomes: {'scenario': 'S1 missing proportional to observed genomes', 'genomes': 174806, 'genomes_per_1000': 1.07, 'gini': 0.876, 'zero_genome_countries': 101, 'RI_LIC': 0.29, 'RI_LMC': 0.14, 'RI_UMC': 1.25, 'RI_HIC': 21.06}
+  S2 missing proportional to burden (most favourable to equality): {'scenario': 'S2 missing proportional to burden (most favourable to equality)', 'genomes': 174806, 'genomes_per_1000': 1.07, 'gini': 0.818, 'zero_genome_countries': 0, 'RI_LIC': 0.34, 'RI_LMC': 0.2, 'RI_UMC': 1.23, 'RI_HIC': 19.74}
+  S3 missing to low-coverage countries by burden: {'scenario': 'S3 missing to low-coverage countries by burden', 'genomes': 174806, 'genomes_per_1000': 1.07, 'gini': 0.818, 'zero_genome_countries': 0, 'RI_LIC': 0.34, 'RI_LMC': 0.2, 'RI_UMC': 1.23, 'RI_HIC': 19.73}
+  S4 missing follow their own study's countries (rest proportional): {'scenario': "S4 missing follow their own study's countries (rest proportional)", 'genomes': 174806, 'genomes_per_1000': 1.07, 'gini': 0.876, 'zero_genome_countries': 100, 'RI_LIC': 0.29, 'RI_LMC': 0.14, 'RI_UMC': 1.25, 'RI_HIC': 21.09}
+  S5 missing all to high-coverage countries (least favourable): {'scenario': 'S5 missing all to high-coverage countries (least favourable)', 'genomes': 174806, 'genomes_per_1000': 1.07, 'gini': 0.884, 'zero_genome_countries': 101, 'RI_LIC': 0.28, 'RI_LMC': 0.13, 'RI_UMC': 1.22, 'RI_HIC': 21.77}
+  (samples with valid 2010-2024 year but missing country: 11492; allocated to a study with known countries: 745, residual 10747)
+
+=== 3. Share of samples without country, by income group of the study ===
+  {'study_income_group': 'LIC', 'samples': 8852, 'without_country': 438, 'share_without_country_pct': 4.9}
+  {'study_income_group': 'LMC', 'samples': 13454, 'without_country': 61, 'share_without_country_pct': 0.5}
+  {'study_income_group': 'UMC', 'samples': 87839, 'without_country': 9275, 'share_without_country_pct': 10.6}
+  {'study_income_group': 'HIC', 'samples': 103674, 'without_country': 5016, 'share_without_country_pct': 4.8}
+  {'study_income_group': 'studies with no sample of known country', 'samples': 73211, 'without_country': 68245, 'share_without_country_pct': 25.5}
+
+=== 4. Publication-lag sensitivity ===
+ lag_threshold_years    window  genomes  genomes_per_1000  gini  zero_genome_countries
+                   3 2010-2012      720             0.021 0.975                    201
+                   3 2013-2015     2406             0.072 0.955                    174
+                   3 2016-2018     8040             0.253 0.921                    166
+                   3 2019-2021    20226             0.657 0.902                    141
+                   5 2010-2012     1501             0.043 0.928                    186
+                   5 2013-2015     7697             0.230 0.880                    162
+                   5 2016-2018    17320             0.544 0.904                    147
+                   7 2010-2012     3883             0.112 0.916                    172
+                   7 2013-2015    10401             0.311 0.847                    151
+                   7 2016-2018    32824             1.031 0.927                    130
+annual (k=3): 2010:0.978, 2011:0.989, 2012:0.985, 2013:0.973, 2014:0.977, 2015:0.975, 2016:0.978, 2017:0.899, 2018:0.933, 2019:0.949, 2020:0.942, 2021:0.897, 2022:0.896
+  {'depositor_class': 'fast (lag <= 3 y)', 'genomes': 11166, 'gini': 0.917, 'share_LIC_pct': 2.8, 'share_LMC_pct': 5.8, 'share_UMC_pct': 54.4, 'share_HIC_pct': 37.1, 'RI_LIC': 0.26, 'RI_LMC': 0.11, 'RI_UMC': 1.64, 'RI_HIC': 14.42}
+  {'depositor_class': 'slow (lag > 3 y)', 'genomes': 61039, 'gini': 0.867, 'share_LIC_pct': 6.5, 'share_LMC_pct': 5.9, 'share_UMC_pct': 52.1, 'share_HIC_pct': 35.5, 'RI_LIC': 0.6, 'RI_LMC': 0.11, 'RI_UMC': 1.57, 'RI_HIC': 13.8}
+  {'depositor_class': 'all', 'genomes': 72205, 'gini': 0.867, 'share_LIC_pct': 5.9, 'share_LMC_pct': 5.9, 'share_UMC_pct': 52.5, 'share_HIC_pct': 35.7, 'RI_LIC': 0.55, 'RI_LMC': 0.11, 'RI_UMC': 1.58, 'RI_HIC': 13.9}
+
+=== 5. Year-specific World Bank income classification ===
+   period income_group  RI_year_specific  RI_current_classification  burden_share_year_specific_pct  genome_share_year_specific_pct
+2010-2014          LIC             0.475                      0.639                           19.18                            9.11
+2010-2014          LMC             0.367                      0.129                           58.43                           21.46
+2010-2014          UMC             2.815                      2.185                           20.31                           57.18
+2010-2014          HIC             5.901                      4.953                            2.07                           12.24
+2015-2019          LIC             0.434                      0.406                           13.65                            5.93
+2015-2019          LMC             0.215                      0.111                           65.02                           13.95
+2015-2019          UMC             1.505                      1.133                           19.96                           30.04
+2015-2019          HIC            36.659                     22.503                            1.37                           50.08
+2020-2024          LIC             0.055                      0.054                           11.94                            0.66
+2020-2024          LMC             0.287                      0.175                           65.16                           18.72
+2020-2024          UMC             1.079                      0.977                           21.59                           23.30
+2020-2024          HIC            43.768                     33.500                            1.31                           57.32
+2010-2024          LIC             0.279                      0.289                           15.05                            4.19
+2010-2024          LMC             0.276                      0.142                           62.75                           17.33
+2010-2024          UMC             1.545                      1.248                           20.61                           31.84
+2010-2024          HIC            29.194                     21.060                            1.60                           46.63

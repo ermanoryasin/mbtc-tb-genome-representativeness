@@ -1,0 +1,4 @@
+depositor_class,genomes,gini,share_LIC_pct,share_LMC_pct,share_UMC_pct,share_HIC_pct,RI_LIC,RI_LMC,RI_UMC,RI_HIC
+fast (lag <= 3 y),11166,0.917,2.8,5.8,54.4,37.1,0.26,0.11,1.64,14.42
+slow (lag > 3 y),61039,0.867,6.5,5.9,52.1,35.5,0.6,0.11,1.57,13.8
+all,72205,0.867,5.9,5.9,52.5,35.7,0.55,0.11,1.58,13.9

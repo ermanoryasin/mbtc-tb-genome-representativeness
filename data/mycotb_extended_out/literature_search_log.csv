@@ -1,0 +1,7 @@
+date,database,query,records
+2026-10-14,PubMed 1,"(tuberculosis[ti] OR ""Mycobacterium tuberculosis""[ti]) AND (genom*[ti] OR sequenc*[ti]) AND (represent*[ti] OR equit*[ti] OR bias*[ti] OR disparit*[ti] OR inequal*[ti] OR gaps[ti] OR coverage[ti])",10
+2026-10-14,PubMed 2,"(""Mycobacterium tuberculosis""[tiab]) AND (""public database*""[tiab] OR ""public genome*""[tiab] OR ""sequence read archive""[tiab] OR ""European Nucleotide Archive""[tiab]) AND (incidence[tiab] OR burden[tiab]) AND (country[tiab] OR geographic*[tiab])",5
+2026-10-14,PubMed 3,"(""Mycobacterium tuberculosis""[tiab]) AND (genom*[tiab] OR ""whole genome""[tiab]) AND (""sampling bias""[tiab] OR representativeness[tiab] OR ""geographic bias""[tiab] OR underrepresent*[tiab] OR ""under-represent*""[tiab])",16
+2026-10-14,PubMed 4,"(tuberculosis[tiab]) AND (""genomic surveillance""[tiab]) AND (equity[tiab] OR inequit*[tiab] OR disparit*[tiab] OR gap[tiab] OR gaps[tiab])",9
+2026-10-14,Europe PMC preprints 1,"(""Mycobacterium tuberculosis"" AND (genome OR genomes OR sequencing) AND (representativeness OR ""sampling bias"" OR inequity OR disparity OR ""public database"" OR ""public databases"")) AND SRC:PPR",37
+2026-10-14,Europe PMC preprints 2,"TITLE:(""tuberculosis"" AND (genomes OR sequencing OR genomic) AND (representation OR representativeness OR equity OR bias OR disparities OR gaps)) AND SRC:PPR",0

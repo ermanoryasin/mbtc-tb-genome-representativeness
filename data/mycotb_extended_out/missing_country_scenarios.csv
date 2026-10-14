@@ -1,0 +1,7 @@
+scenario,genomes,genomes_per_1000,gini,zero_genome_countries,RI_LIC,RI_LMC,RI_UMC,RI_HIC
+S0 missing excluded (main analysis),163314,1.0,0.876,101,0.29,0.14,1.25,21.06
+S1 missing proportional to observed genomes,174806,1.07,0.876,101,0.29,0.14,1.25,21.06
+S2 missing proportional to burden (most favourable to equality),174806,1.07,0.818,0,0.34,0.2,1.23,19.74
+S3 missing to low-coverage countries by burden,174806,1.07,0.818,0,0.34,0.2,1.23,19.73
+S4 missing follow their own study's countries (rest proportional),174806,1.07,0.876,100,0.29,0.14,1.25,21.09
+S5 missing all to high-coverage countries (least favourable),174806,1.07,0.884,101,0.28,0.13,1.22,21.77

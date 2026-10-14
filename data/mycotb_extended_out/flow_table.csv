@@ -1,0 +1,11 @@
+step,count,reason_or_note
+"ENA runs, taxon tree 1773 (BioSample-level: 334625)",359605,retrieved 14 October 2026; NCBI Entrez count of 378990 records was higher by 19385 and could not be reconciled
+after strict M. tuberculosis label,342252,"excluded variants and complex members (bovis, africanum, caprae, BCG and others)"
+after excluding laboratory reference strains,328573,"H37Rv, H37Ra, Erdman, HN878, CDC1551, ATCC"
+"after whole-genome, genomic-source runs",301549,"excluded RNA-seq, Tn-seq and amplicon assays"
+BioSamples (analysis unit),287030,runs collapsed to BioSample
+with a single known country,203995,country missing or multiple for 83035 (28.9%)
+with known country and collection year 2010-2024,168729,collection year missing or outside 2010-2024 for 35266
+matched to a WHO reporting country (denominator of all representation statistics),163314,"unmatched: Taiwan 5265, Kosovo 96, Durban Chest Clinic 18, King Dinuzulu Hospital 15, other 21"
+"countries with WHO incidence, 2010-2024",212,"of which 207 with a World Bank income group (5 small territories unclassified, all without genomes)"
+countries in the regression models,187,"complete GDP, articles per million, incidence rate, region and income"

@@ -167,12 +167,13 @@ for l in refs.split("\n"):
 # supplementary tables
 d.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
 add_par(d, "Supplementary tables (selected)", bold=True, align=WD_ALIGN_PARAGRAPH.LEFT)
-add_par(d, "Full set (S1 to S9, including regression output S5, negative binomial models S7 and country-level expected counts S9) is in the Supplementary_Tables.xlsx workbook and the repository (doi:10.5281/zenodo.23376282).", size=10, single=True)
+add_par(d, "Full set (S1 to S14, including regression output S5, all negative binomial models S7 and country-level expected counts S9) is in the Supplementary_Tables.xlsx workbook and the repository (doi:10.5281/zenodo.23376282).", size=10, single=True)
 wb = load_workbook(SUB / "Supplementary_Tables.xlsx")
-for name in ["S1 study cap", "S2 region x release", "S3 model specification", "S4 study bootstrap", "S6 Turkey provenance", "S8 Turkey NB expectations"]:
+for name in ["S1 study cap", "S2 region x release", "S3 model specification", "S4 study bootstrap", "S6 Turkey provenance", "S7 negative binomial models", "S8 Turkey NB expectations", "S10 flow of the analysis set", "S11 missing-country scenarios", "S11b missing-country probe", "S12 lag thresholds", "S12b fast vs slow depositors", "S13 income year-specific", "S14 literature search log"]:
     ws = wb[name]; rows = [[("" if v is None else v) for v in r] for r in ws.iter_rows(values_only=True)]
     rows = [r for r in rows if any(str(c).strip() for c in r)]
-    add_par(d, f"Supplementary Table {name.split()[0]}: {' '.join(name.split()[1:])}", bold=True, size=10, single=True, align=WD_ALIGN_PARAGRAPH.LEFT).paragraph_format.keep_with_next = True
+    if name.startswith('S7'): rows = [rows[0]] + [r for r in rows[1:] if str(r[0]).startswith(('P3 ', 'P4 '))]
+    add_par(d, f"Supplementary Table {name.split()[0].upper()}: {' '.join(name.split()[1:])}" + (" (models P3 and P4 shown; full set in the workbook)" if name.startswith("S7") else ""), bold=True, size=10, single=True, align=WD_ALIGN_PARAGRAPH.LEFT).paragraph_format.keep_with_next = True
     add_table(d, [[(f"{c:g}" if isinstance(c, float) else str(c))[:58] for c in r] for r in rows], size=6.5 if len(rows[0]) > 7 else 8)
     d.add_paragraph().paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
 d.save(SUB / "Manuscript_for_external_review.docx")
