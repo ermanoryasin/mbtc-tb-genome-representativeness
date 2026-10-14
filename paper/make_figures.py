@@ -115,7 +115,7 @@ a.legend(fontsize=5.3,loc="upper left",bbox_to_anchor=(-.02,-.22),handletextpad=
 a=ax[1]; nbx["sf_p"]=nbx.expected_poisson_P3-nbx.observed
 s_=nbx.sort_values("sf_p",ascending=False).head(12).iloc[::-1]
 a.barh(s_.country,s_.sf_p/1000,color=[C["tr"] if c=="Turkey" else C["gen"] for c in s_.country]); a.set_xlabel("Shortfall (thousand genomes), Poisson P3"); a.set_title("Largest shortfalls"); lab(a,"b")
-a.text(.99,.02,"Turkey: rank 9 (Poisson),\n21 (negative binomial).\nExpected counts are not calibrated;\nshortfall is not absence of sequencing.",transform=a.transAxes,fontsize=5.6,color=C["tr"],ha="right",va="bottom")
+a.text(.99,.02,"Turkey: rank 9 (Poisson),\n21 (negative binomial).\nExpected counts are not\ncalibrated; a shortfall is not\nabsence of sequencing.",transform=a.transAxes,fontsize=5.6,color=C["tr"],ha="right",va="bottom")
 a=ax[2]; n=tn.iloc[::-1].reset_index(drop=True); nz=n.genomes_per_1000_cases>0
 a.barh(n.index[nz],n.genomes_per_1000_cases[nz],color=[C["tr"] if c=="Turkey" else C["bur"] for c in n.country[nz]]); a.set_xscale("log"); a.set_xlim(.004,400)
 a.scatter([.006]*int((~nz).sum()),n.index[~nz],marker="x",s=14,c=[C["tr"] if c=="Turkey" else C["gray"] for c in n.country[~nz]],lw=1)
