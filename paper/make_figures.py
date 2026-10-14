@@ -43,7 +43,7 @@ for n in ["India","China","South Africa","Indonesia","Philippines","Pakistan","N
     r=d[d.country==n]
     if len(r): r=r.iloc[0]; a.annotate(n.replace("United States of America","USA"),(r.cases/1000,max(r.obs,.3)),xytext=(3,3),textcoords="offset points",fontsize=5.5)
 a.set_xscale("log"); a.set_yscale("log"); a.set_xlim(3,6e4); a.set_ylim(.2,1e5)
-a.set_xlabel("Incident cases 2010-2024 (thousands)"); a.set_ylabel("Public genomes"); a.set_title("Countries (n = 182)"); lab(a,"b")
+a.set_xlabel("Incident cases 2010-2024 (thousands)"); a.set_ylabel("Public genomes"); a.set_title("Countries (n = 207)"); lab(a,"b")
 a.legend(fontsize=5.8,loc="upper center",bbox_to_anchor=(.5,-.2),ncol=4,handletextpad=.1,columnspacing=.7,markerscale=1.2);
 a=ax[2]; keys=["LIC","LMC","UMC","HIC"]; pt=[bs.loc[f"RI_{k}","point"] for k in keys]; lo=[bs.loc[f"RI_{k}","ci_lo"] for k in keys]; hi=[bs.loc[f"RI_{k}","ci_hi"] for k in keys]
 for i,k in enumerate(keys): a.errorbar(i,pt[i],yerr=[[pt[i]-lo[i]],[hi[i]-pt[i]]],fmt="o",c=INC[k],capsize=2.5,ms=5,lw=1.2)
