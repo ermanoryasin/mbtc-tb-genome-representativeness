@@ -32,4 +32,4 @@ Year-specific World Bank income classification (`data/mycotb_extended_out/extern
 Code: MIT. Derived tables and figures: CC BY 4.0. Underlying metadata remain subject to the terms of ENA/INSDC, WHO and the World Bank.
 
 ## Citation
-Archived release v1.0.0: https://doi.org/10.5281/zenodo.23376282 (concept DOI for all versions: https://doi.org/10.5281/zenodo.23376281). See `CITATION.cff`.
+Archived release v1.1.0: https://doi.org/10.5281/zenodo.23377297 (concept DOI for all versions: https://doi.org/10.5281/zenodo.23376281). See `CITATION.cff`.
