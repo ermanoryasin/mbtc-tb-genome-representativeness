@@ -83,30 +83,38 @@ for reg,gdf in rr.groupby("who_region"):
 a.axhline(1,c="k",lw=.6,ls=":"); a.set_yscale("log"); a.set_yticks([.03,.1,.3,1,3,10]); a.set_yticklabels(["0","0.1","0.3","1","3","10"]); a.minorticks_off(); a.set_xlim(-.2,3.6)
 a.set_xticks(range(4)); a.set_xticklabels(sorted(rr.release_window.unique()),fontsize=7); a.set_ylabel("Representation index (log)"); a.set_title("WHO region, by release window"); lab(a,"d")
 save(f,"Fig3_temporal")
-# ---------- Fig 4 forest
-want=[("P3 ANA","Main model (P3)"),("P4","+ case volume (P4)"),("P5","+ WHO region (P5)"),("S1","Excluding USA"),("S2","Low/middle income only"),("P6","Health expenditure (P6)")]
-terms=[("log2gdp","GDP per capita"),("log2rate","TB incidence rate"),("log2artpc","Articles per million")]
-f,ax=plt.subplots(1,3,figsize=(7.2,2.6),sharey=True,gridspec_kw=dict(wspace=.08))
+# ---------- Fig 4 forest: Poisson (filled) vs negative binomial (open)
+want=[("P3","Main model (P3)","P3"),("P4","+ case volume (P4)","P4"),("P5 (P3 + WHO region)","+ WHO region (P5)","P5 (P3 + WHO region)"),("S1 excluding USA","Excluding USA","S1 excluding USA"),("S2 low/middle income","Low/middle income only","S2 low/middle income"),("P6 health expenditure","Health expenditure (P6)","P6 health expenditure")]
+terms=[("log2 GDP","GDP per capita"),("log2 rate","TB incidence rate"),("log2 art/M","Articles per million")]
+f,ax=plt.subplots(1,3,figsize=(7.4,3.0),sharey=True,gridspec_kw=dict(wspace=.08))
 for a,(tm,ttl) in zip(ax,terms):
-    for i,(k,nm) in enumerate(want):
-        r=mo[mo.model.str.startswith(k)&(mo.term==tm)|(mo.model.str.startswith(k)&(k=="P6")&(mo.term==tm.replace("gdp","health")))]
-        if r.empty: continue
-        r=r.iloc[0]; a.errorbar(r.ratio_exp_coef,-i,xerr=[[r.ratio_exp_coef-r.ci_lo],[r.ci_hi-r.ratio_exp_coef]],fmt="o",c=C["bur"] if r.ci_lo>1 or r.ci_hi<1 else C["gray"],ms=4,lw=1,capsize=2)
-    a.axvline(1,c="k",lw=.6,ls=":"); a.set_xscale("log"); a.set_xticks([.25,.5,1,2,4,8]); a.set_xticklabels(["0.25","0.5","1","2","4","8"]); a.minorticks_off(); a.set_xlim(.3,8); a.set_title(ttl,fontsize=7,loc="center"); a.set_xlabel("Rate ratio per doubling (95% CI)")
-ax[0].set_yticks([-i for i in range(len(want))]); ax[0].set_yticklabels([w[1] for w in want])
+    for i,(k,nm,pref) in enumerate(want):
+        t_=tm.replace("GDP","health") if k.startswith("P6") and tm=="log2 GDP" else tm
+        for est,lbl,off_,fill in [("Poisson HC1","Poisson",.17,True),("NB2 robust","Negative binomial",-.17,False)]:
+            r=nbm[(nbm.model==f"{pref} {est}")&(nbm.term==t_)]
+            if r.empty: continue
+            r=r.iloc[0]; col=C["bur"] if est.startswith("Poisson") else C["gen"]
+            a.errorbar(r.rr,-i+off_,xerr=[[r.rr-r.ci_lo],[r.ci_hi-r.rr]],fmt="o" if fill else "D",mfc=col if fill else "white",mec=col,c=col,ms=3.6,lw=1,capsize=1.8,label=lbl if (i==0 and tm=="log2 GDP") else None)
+    a.axvline(1,c="k",lw=.6,ls=":"); a.set_xscale("log"); a.set_xticks([.25,.5,1,2,4,8]); a.set_xticklabels(["0.25","0.5","1","2","4","8"]); a.minorticks_off(); a.set_xlim(.22,12); a.set_title(ttl,fontsize=7,loc="center"); a.set_xlabel("Rate ratio per doubling (95% CI)")
+ax[0].set_yticks([-i for i in range(len(want))]); ax[0].set_yticklabels([w[1] for w in want]); ax[0].legend(fontsize=6,loc="upper center",bbox_to_anchor=(1.6,-.2),ncol=2)
 save(f,"Fig4_regression")
 # ---------- Fig 5
-f,ax=plt.subplots(1,3,figsize=(7.4,2.9),gridspec_kw=dict(width_ratios=[1.1,1,1],wspace=.65))
-a=ax[0]; e=ev[ev.observed_genomes>0]; a.scatter(e.expected_genomes_P3,e.observed_genomes,s=8,c=C["gray"],alpha=.6,lw=0)
-m=max(ev.expected_genomes_P3.max(),ev.observed_genomes.max()); a.plot([1,m],[1,m],"--",c="k",lw=.7)
-t_=ev[ev.country=="Turkey"].iloc[0]; a.scatter([t_.expected_genomes_P3],[.7],s=40,c=C["tr"],zorder=5,marker="v"); a.annotate("Turkey\n(0 observed)",(t_.expected_genomes_P3,.7),xytext=(-62,16),textcoords="offset points",arrowprops=dict(arrowstyle="-",color=C["tr"],lw=.6),fontsize=7,color=C["tr"],fontweight="bold")
+nbx=pd.read_csv(S+"mycotb_extended_out/negbin_expected_P3.csv"); nbt=pd.read_csv(S+"mycotb_extended_out/negbin_turkey.csv").set_index("model")
+f,ax=plt.subplots(1,3,figsize=(7.6,3.0),gridspec_kw=dict(width_ratios=[1.1,1.15,1],wspace=.7))
+a=ax[0]; e=nbx[(nbx.observed>0)&(nbx.country!="Turkey")]; a.scatter(e.expected_poisson_P3,e.observed,s=7,c=C["gray"],alpha=.55,lw=0,label="Other countries (Poisson P3)")
+m_=max(nbx.expected_poisson_P3.max(),nbx.observed.max()); a.plot([1,m_],[1,m_],"--",c="k",lw=.7)
+tp=nbt.loc["P3"]; a.scatter([tp.expected_poisson],[.7],s=34,c=C["tr"],zorder=5,marker="v",label="Turkey, Poisson")
+a.errorbar([tp.expected_nb2],[.7],xerr=[[tp.expected_nb2-tp.expected_nb2_lo],[tp.expected_nb2_hi-tp.expected_nb2]],fmt="D",mfc="white",mec=C["tr"],c=C["tr"],ms=4,lw=1,capsize=2,zorder=5,label="Turkey, negative binomial (95% interval)")
 a.set_xscale("log"); a.set_yscale("log"); a.set_ylim(.5,None); a.set_xlabel("Expected genomes (model P3)"); a.set_ylabel("Observed genomes"); a.set_title("Observed vs expected"); lab(a,"a")
-a=ax[1]; s=ev.sort_values("expected_minus_observed_P3",ascending=False).head(12).iloc[::-1]
-a.barh(s.country,s.expected_minus_observed_P3/1000,color=[C["tr"] if c=="Turkey" else C["gen"] for c in s.country]); a.set_xlabel("Shortfall (thousand genomes)"); a.set_title("Largest shortfalls"); lab(a,"b")
+a.legend(fontsize=5.3,loc="upper left",bbox_to_anchor=(-.02,-.22),handletextpad=.2)
+a=ax[1]; nbx["sf_p"]=nbx.expected_poisson_P3-nbx.observed
+s_=nbx.sort_values("sf_p",ascending=False).head(12).iloc[::-1]
+a.barh(s_.country,s_.sf_p/1000,color=[C["tr"] if c=="Turkey" else C["gen"] for c in s_.country]); a.set_xlabel("Shortfall (thousand genomes), Poisson P3"); a.set_title("Largest shortfalls"); lab(a,"b")
+a.text(.97,.04,"Turkey: rank 9 (Poisson),\n21 (negative binomial)",transform=a.transAxes,fontsize=6,color=C["tr"],ha="right",va="bottom")
 a=ax[2]; n=tn.iloc[::-1].reset_index(drop=True); nz=n.genomes_per_1000_cases>0
 a.barh(n.index[nz],n.genomes_per_1000_cases[nz],color=[C["tr"] if c=="Turkey" else C["bur"] for c in n.country[nz]]); a.set_xscale("log"); a.set_xlim(.004,400)
 a.scatter([.006]*int((~nz).sum()),n.index[~nz],marker="x",s=14,c=[C["tr"] if c=="Turkey" else C["gray"] for c in n.country[~nz]],lw=1)
-a.set_yticks(n.index); a.set_yticklabels(n.country); a.set_xlabel("Genomes per 1,000 cases (log)"); a.set_title("Turkey and neighbours"); a.text(.97,.02,"x = zero genomes",transform=a.transAxes,fontsize=6,color=C["gray"],ha="right"); lab(a,"c")
+a.set_yticks(n.index); a.set_yticklabels(n.country); a.set_xlabel("Genomes per 1000 cases (log)"); a.set_title("Turkey and neighbours"); a.text(.97,.02,"x = zero genomes",transform=a.transAxes,fontsize=6,color=C["gray"],ha="right"); lab(a,"c")
 save(f,"Fig5_turkey")
 # ---------- Fig 6 study dependence
 f,ax=plt.subplots(1,3,figsize=(7.4,2.8),gridspec_kw=dict(width_ratios=[1.15,.9,1.2],wspace=.55))

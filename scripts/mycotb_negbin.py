@@ -127,6 +127,9 @@ def main():
                      "expected_nb2": round(float(mun[ti]), 0), "expected_nb2_lo": round(float(np.percentile(mu_draw, 2.5)), 0),
                      "expected_nb2_hi": round(float(np.percentile(mu_draw, 97.5)), 0), "alpha": round(a, 2),
                      "p_obs_le_under_nb2": float(f"{p_le:.3g}"), "p_obs_le_averaged": float(f"{p_draw:.3g}")})
+        out(f"   Calibration {name}: sum of fitted means Poisson {mu.sum():.0f}, NB2 {mun.sum():.0f}, observed {y.sum():.0f} (NB2/observed = {mun.sum() / y.sum():.1f})")
+        if name == "P3":
+            pd.DataFrame({"country": d.country, "who_region": d.region, "income": d.income, "observed": y, "expected_poisson_P3": mu, "expected_nb2_P3": mun}).to_csv(OUT / "negbin_expected_P3.csv", index=False)
         # shortfall rank under NB2 (expected - observed) among 187
         sf = pd.Series(mun - y, index=d.country).sort_values(ascending=False)
         turk[-1]["shortfall_rank_nb2"] = int(list(sf.index).index("Turkey") + 1)
@@ -162,6 +165,25 @@ def main():
             if not t.startswith("region"):
                 r1, r2 = rows[-2], rows[-1]
                 line += f" | {t}: Poisson {r1['rr']:.2f} ({r1['ci_lo']:.2f}-{r1['ci_hi']:.2f}); NB2 {r2['rr']:.2f} ({r2['ci_lo']:.2f}-{r2['ci_hi']:.2f})"
+        out(line)
+    # ---- Table 2 / Figure 4 models on their own subsets: S1 (no USA), S2 (low/middle income), P6 (health expenditure) ----
+    out("\n=== Subset models (Poisson HC1 vs NB2 robust) ===")
+    subsets = [("S1 excluding USA", d[d.iso3 != "USA"], ["gdp", "rate", "artpc"], ["log2 GDP", "log2 rate", "log2 art/M"]),
+               ("S2 low/middle income", d[d.income.isin(["LIC", "LMC", "UMC"])], ["gdp", "rate", "artpc"], ["log2 GDP", "log2 rate", "log2 art/M"]),
+               ("P6 health expenditure", d[d.health.notna() & (d.health > 0)], ["health", "rate", "artpc"], ["log2 health", "log2 rate", "log2 art/M"])]
+    for name, dd, cols_, terms in subsets:
+        dd = dd.reset_index(drop=True); yy = dd.obs.to_numpy(float); oo = np.log(dd.cases.to_numpy()); nn = len(dd)
+        X = np.column_stack([np.ones(nn)] + [np.log2(dd[c]) for c in cols_])
+        b, mu = poisson_fit(X, yy, oo); k = X.shape[1]
+        br_ = np.linalg.inv((X.T * mu) @ X); u = X * (yy - mu)[:, None]
+        cov = br_ @ (u.T @ u) @ br_ * nn / (nn - k)
+        bn, a, mun, bread_n, cov_rob, ll = nb_fit(X, yy, oo)
+        line = f"{name:24s} n={nn} alpha={a:5.2f}"
+        for j, t in enumerate(terms, start=1):
+            rows.append(row(f"{name} Poisson HC1", t, b[j], np.sqrt(cov[j, j]), nn))
+            rows.append(row(f"{name} NB2 robust", t, bn[j], np.sqrt(cov_rob[j, j]), nn))
+            r1, r2 = rows[-2], rows[-1]
+            line += f" | {t}: P {r1['rr']:.2f} ({r1['ci_lo']:.2f}-{r1['ci_hi']:.2f}); NB2 {r2['rr']:.2f} ({r2['ci_lo']:.2f}-{r2['ci_hi']:.2f})"
         out(line)
     out(f"\nSpearman correlations among predictors: GDP-rate {stats.spearmanr(d.gdp, d.rate)[0]:.2f}; GDP-articles/M {stats.spearmanr(d.gdp, d.artpc)[0]:.2f}; rate-articles/M {stats.spearmanr(d.rate, d.artpc)[0]:.2f}")
     pd.DataFrame(rows).to_csv(OUT / "negbin_models.csv", index=False)

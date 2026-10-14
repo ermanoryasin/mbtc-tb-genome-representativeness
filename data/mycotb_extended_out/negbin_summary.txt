@@ -10,6 +10,7 @@ MycoTB v7 negative binomial sensitivity; n = 187
    P3 quasi-Poisson       rate RR 0.51 (0.32-0.81)
    P3 NB2 ML              rate RR 1.37 (1.09-1.73)
    P3 NB2 robust          rate RR 1.37 (1.11-1.70)
+   Calibration P3: sum of fitted means Poisson 163314, NB2 1345997, observed 163314 (NB2/observed = 8.2)
    Turkey: observed 0, expected Poisson 2614, NB2 3870 (95% 2326-6421); P(Y<=0) under NB2 = 0.179; rank by shortfall NB2 21 vs Poisson 9
 
 [P4] Pearson dispersion (Poisson) = 5500.4
@@ -22,6 +23,7 @@ MycoTB v7 negative binomial sensitivity; n = 187
    P4 quasi-Poisson       rate RR 0.60 (0.43-0.85)
    P4 NB2 ML              rate RR 1.35 (1.03-1.76)
    P4 NB2 robust          rate RR 1.35 (0.98-1.85)
+   Calibration P4: sum of fitted means Poisson 163314, NB2 1833325, observed 163314 (NB2/observed = 11.2)
    Turkey: observed 0, expected Poisson 2844, NB2 4402 (95% 2430-7870); P(Y<=0) under NB2 = 0.176; rank by shortfall NB2 22 vs Poisson 6
 
 === Additional specifications (rate ratios; Poisson HC1 vs NB2 robust) ===
@@ -32,5 +34,10 @@ GDP + rate                   alpha= 6.82 | log2 GDP: Poisson 2.04 (1.23-3.38); N
 GDP + articles               alpha= 5.96 | log2 GDP: Poisson 4.53 (2.33-8.79); NB2 0.71 (0.43-1.17) | log2 art/M: Poisson 1.12 (0.82-1.54); NB2 2.25 (1.80-2.82)
 P5 (P3 + WHO region)         alpha= 5.38 | log2 GDP: Poisson 1.74 (0.98-3.06); NB2 0.49 (0.29-0.81) | log2 rate: Poisson 0.62 (0.46-0.84); NB2 1.39 (1.01-1.91) | log2 art/M: Poisson 1.16 (0.87-1.54); NB2 3.01 (2.26-4.00)
 Income groups (ref low)      alpha= 6.69 | income HIC: Poisson 71.78 (13.47-382.60); NB2 13.61 (2.45-75.60) | income LMC: Poisson 0.47 (0.16-1.37); NB2 0.24 (0.04-1.52) | income UMC: Poisson 4.12 (1.20-14.15); NB2 3.33 (0.48-23.04)
+
+=== Subset models (Poisson HC1 vs NB2 robust) ===
+S1 excluding USA         n=186 alpha= 5.77 | log2 GDP: P 2.26 (1.26-4.06); NB2 0.84 (0.48-1.49) | log2 rate: P 0.66 (0.46-0.95); NB2 1.49 (1.22-1.82) | log2 art/M: P 0.99 (0.74-1.31); NB2 2.51 (1.88-3.34)
+S2 low/middle income     n=124 alpha= 6.45 | log2 GDP: P 3.20 (1.46-7.00); NB2 0.91 (0.43-1.96) | log2 rate: P 0.82 (0.57-1.19); NB2 1.46 (1.20-1.77) | log2 art/M: P 0.95 (0.74-1.21); NB2 2.68 (1.92-3.73)
+P6 health expenditure    n=185 alpha= 5.77 | log2 health: P 2.14 (1.58-2.89); NB2 0.89 (0.51-1.55) | log2 rate: P 0.69 (0.53-0.89); NB2 1.33 (1.08-1.64) | log2 art/M: P 0.82 (0.68-0.99); NB2 2.50 (1.78-3.51)
 
 Spearman correlations among predictors: GDP-rate -0.69; GDP-articles/M 0.86; rate-articles/M -0.66
