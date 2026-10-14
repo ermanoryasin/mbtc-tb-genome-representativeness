@@ -39,9 +39,10 @@ for r_,l_ in [(.01,"0.01"),(.1,"0.1"),(1,"1"),(10,"10"),(100,"100")]:
     a.plot(xs,xs*r_,c=C["gray"],lw=.5,ls=":"); 
     if r_ in (.1,1): a.text(xs[1]*.9,xs[1]*r_*.9,l_,fontsize=5.5,color=C["gray"],ha="right",va="top")
 a.axhline(.3,c=C["gray"],lw=.4); a.text(5e4,.36,"zero genomes",fontsize=5.5,color=C["gray"],ha="right")
-for n in ["India","China","South Africa","Indonesia","Philippines","Pakistan","Nigeria","United States of America","Georgia","Turkey","Viet Nam"]:
+OFF={"India":(-8,6),"China":(-30,5),"South Africa":(-58,2),"Indonesia":(3,3),"Pakistan":(3,3),"Nigeria":(-28,4),"Philippines":(3,-9),"United States of America":(3,3),"Georgia":(3,3),"Turkey":(3,3)}
+for n,o_ in OFF.items():
     r=d[d.country==n]
-    if len(r): r=r.iloc[0]; a.annotate(n.replace("United States of America","USA"),(r.cases/1000,max(r.obs,.3)),xytext=(3,3),textcoords="offset points",fontsize=5.5)
+    if len(r): r=r.iloc[0]; a.annotate(n.replace("United States of America","USA"),(r.cases/1000,max(r.obs,.3)),xytext=o_,textcoords="offset points",fontsize=5.5)
 a.set_xscale("log"); a.set_yscale("log"); a.set_xlim(3,6e4); a.set_ylim(.2,1e5)
 a.set_xlabel("Incident cases 2010-2024 (thousands)"); a.set_ylabel("Public genomes"); a.set_title("Countries (n = 207)"); lab(a,"b")
 a.legend(fontsize=5.8,loc="upper center",bbox_to_anchor=(.5,-.2),ncol=4,handletextpad=.1,columnspacing=.7,markerscale=1.2);
@@ -114,7 +115,7 @@ a.legend(fontsize=5.3,loc="upper left",bbox_to_anchor=(-.02,-.22),handletextpad=
 a=ax[1]; nbx["sf_p"]=nbx.expected_poisson_P3-nbx.observed
 s_=nbx.sort_values("sf_p",ascending=False).head(12).iloc[::-1]
 a.barh(s_.country,s_.sf_p/1000,color=[C["tr"] if c=="Turkey" else C["gen"] for c in s_.country]); a.set_xlabel("Shortfall (thousand genomes), Poisson P3"); a.set_title("Largest shortfalls"); lab(a,"b")
-a.text(.97,.04,"Turkey: rank 9 (Poisson),\n21 (negative binomial)\nExpected counts are not calibrated;\nshortfall is not absence of sequencing",transform=a.transAxes,fontsize=5.6,color=C["tr"],ha="right",va="bottom")
+a.text(.99,.02,"Turkey: rank 9 (Poisson),\n21 (negative binomial).\nExpected counts are not calibrated;\nshortfall is not absence of sequencing.",transform=a.transAxes,fontsize=5.6,color=C["tr"],ha="right",va="bottom")
 a=ax[2]; n=tn.iloc[::-1].reset_index(drop=True); nz=n.genomes_per_1000_cases>0
 a.barh(n.index[nz],n.genomes_per_1000_cases[nz],color=[C["tr"] if c=="Turkey" else C["bur"] for c in n.country[nz]]); a.set_xscale("log"); a.set_xlim(.004,400)
 a.scatter([.006]*int((~nz).sum()),n.index[~nz],marker="x",s=14,c=[C["tr"] if c=="Turkey" else C["gray"] for c in n.country[~nz]],lw=1)
